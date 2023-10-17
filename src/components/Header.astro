@@ -1,5 +1,21 @@
-<nav class="flex p-4 gap-10">
-	<a href="/">Home</a>
-	<a href="/about">About</a>
-	<a href="/contact">Contact</a> 
+<nav class="fixed left-0 right-0 z-10">
+	<div class="container md:max-w-screen-xl mx-auto mt-4 flex items-center text-sm justify-between bg-opacity-5 bg-white rounded-full ">
+		<a href="/" class="nav-item text-xl">awearsense</a>
+		<div class="flex gap-2">
+			<a href="/about" class="nav-item">about</a> 
+			<a href="/science" class="nav-item">science</a>
+			<a href="/docs" class="nav-item">docs</a>
+			<a href="/contact" class="bg-pink-600 flex items-center justify-center px-8 rounded-full text-white">CONTACT</a>
+		</div>
+	</div>
 </nav>
+
+<style>
+	.nav-item {
+		@apply tracking-wide px-8 py-3 text-white;
+	}
+
+	.nav-item:hover {
+		@apply  bg-opacity-10 bg-white rounded-full;
+	}
+</style>

@@ -13,12 +13,7 @@ export default {
 				  lineHeight: '9rem',
 				  letterSpacing: '-0.01em',
 				  fontWeight: '500',
-				}],
-				'2xl': ['1.875rem', {
-				  lineHeight: '2.25rem',
-				  letterSpacing: '0.01em',
-				  fontWeight: '100',
-				}],
+				}]
 			}
 		},
 	},
