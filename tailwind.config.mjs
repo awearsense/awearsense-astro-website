@@ -8,7 +8,13 @@ export default {
 				  lineHeight: '9rem',
 				  letterSpacing: '-0.01em',
 				  fontWeight: '500',
-				}]
+				}],
+				fontFamily: {
+					'DM-Sans': ["DM Sans", "serif"],
+				}
+			}, 
+			colors:{
+				btn:'#00C805'
 			}
 		},
 	},

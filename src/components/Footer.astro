@@ -1,9 +1,9 @@
-<footer class="bg-slate-100">
-    <div class="container md:max-w-screen-xl mx-auto py-16">
+<footer class="bg-slate-200" id="footer">
+    <div class="container md:max-w-screen-xl mx-auto py-16 backdrop-blur">
         <div class="grid grid-cols-3">
-            <div class="text-xl">awearsense</div>
+            <div class="text-xl font-medium text-btn tracking-tight px-6">awearsense</div>
             <div class="flex flex-col gap-4">
-                <span class="font-semibold">contact us</span>
+                <span class="font-semibold text-gray-800">contact us</span>
                 <a class="items" href="https://www.linkedin.com/company/awearsense">
                     <span class="material-symbols-outlined">
                     mail
@@ -16,10 +16,11 @@
                     </span>Bengaluru, IN </a>
             </div>
             <div class="flex flex-col gap-4 ">
-                <span class="font-semibold">follow us</span>
-                <a class="items" href="https://www.linkedin.com/company/awearsense">linkedin</a>
-                <a class="items" href="">instagram</a> 
-                <a class="items" href="https://reddit.com/r/awearsense/s/HK8iID09Jf">reddit</a>
+                <span class="font-semibold text-gray-800">follow us</span>
+                <a target="_blank" class="items" href="https://www.linkedin.com/company/awearsense">linkedin</a>
+                <a target="_blank" class="items" href="">instagram</a> 
+                <a target="_blank" class="items" href="https://reddit.com/r/awearsense/s/HK8iID09Jf">reddit</a>
+                <a target="_blank" class="items" href="https://github.com/awearsense">github</a>
             </div>
         </div>
     </div>
@@ -27,6 +28,13 @@
 
 <style>
     .items{
-        @apply font-extralight opacity-70 text-sm flex items-center gap-4 tracking-wide;
+        @apply opacity-50 text-sm flex items-center gap-4 tracking-wide;
+    }
+
+    #footer{  
+        background-image: url('../assets/bg.jpg');
+        background-repeat: no-repeat no-repeat;
+        background-position: center;
+        background-size: cover;
     }
 </style>
