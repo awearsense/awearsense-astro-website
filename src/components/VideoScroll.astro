@@ -1,0 +1,89 @@
+---
+export interface Props {
+    section: number;
+    main: string;
+    video: string;
+	title: string;
+    description: string;
+}
+
+const { section, main, video, title, description } = Astro.props;
+---
+
+<script>
+    class VideoScroll extends HTMLElement {
+        constructor() {
+        super();
+
+        // Read the message from the data attribute.
+        const section = this.dataset.section;
+
+        const IntroVideoRef = document.getElementById(`section-${section}`);
+        const videoRef = document.getElementById(`video-section-${section}`); 
+        videoRef.onloadedmetadata = function() {
+            const pauseVideo = () => { 
+                videoRef.removeAttribute("autoplay");
+                videoRef.currentTime = 0;
+                videoRef.pause();
+                gsap.delayedCall(4, () => ScrollTrigger.refresh());
+            }
+            
+            if (videoRef) {
+                pauseVideo()
+            }
+
+            const videoDuration = this.duration;
+
+            ScrollTrigger.create({
+                trigger: IntroVideoRef,
+                scrub: true,
+                pin: IntroVideoRef,
+                start: '-100',
+                end: `+=${videoDuration * 300}`,
+                markers: true,
+                onUpdate: function(self) { 
+                    if (videoRef) {
+                    const scrollPos = self.progress;
+                    const videoCurrentTime = videoDuration * scrollPos;
+                    if(videoCurrentTime) {
+                        videoRef.currentTime = videoCurrentTime;
+                    }
+                    }
+                },
+            });
+            console.log(videoTime)
+        };  
+        
+    }
+  }
+  customElements.define('video-scroll', VideoScroll);
+</script>
+
+<video-scroll data-section={section}>
+    <div class='w-full h-full hyperboards-container min-h-[200px] md:min-h-[300px]' id={`section-${section}`}>
+        <div class='flex justify-end w-full translate-y-[30px] lg:translate-y-[70px]'>
+            <h2 class='text-4xl font-bold md:text-7xl text-grey'>
+                {main}
+            </h2>
+        </div>
+        <div class='grid grid-cols-1 gap-4 md:grid-cols-12'>
+            <div class='w-full col-span-1 col-start-1 overflow-hidden rounded-xl video-col md:col-span-7 md:col-start-2'>
+            <video muted playsinline autoplay disableRemotePlayback id={`video-section-${section}`} class="min-h-[200px]">
+                <source src={video} type="video/mp4"/>
+            </video>
+            </div>
+            <div class='col-span-1 section-text md:col-span-4'>
+                <h4 class='bold text-[25px] text-white'>{title}</h4>
+                <p class='light text-light-grey'>{description}</p>
+            </div>
+        </div>
+    </div>
+</video-scroll>
+
+<style>
+    .section-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+</style>
