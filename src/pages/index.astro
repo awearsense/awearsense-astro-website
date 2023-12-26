@@ -25,14 +25,18 @@ const images = [
 
 	gsap.registerPlugin(ScrollTrigger);
 
+	// create
+	let mm = gsap.matchMedia();
+
 	const tl = gsap.timeline();
 	const msg = [
 		{ parent: ".b", child: ".focus", startPos: "-50%", endPos: "0" },
 		{ parent: ".c", child: ".relax", startPos: "100%", endPos: "0" },
 		{ parent: ".d", child: ".control", startPos: "-50%", endPos: "0" },
 	];
+ 
 	msg.forEach((elm) => {
-		console.log(elm);
+		 
 		tl.fromTo(
 			elm.child,
 			{
@@ -51,15 +55,41 @@ const images = [
 				},
 			},
 		);
-	});
+	}); 
+	
+	//-------- responsvie ------------- 
 
+	mm.add({
+		isDesktop:`(min-width: ${2000}px) and (prefers-reduced-motion: no-preference)`,
+		isLaptop:`(max-width: ${1920}px) and (prefers-reduced-motion: no-preference)`,
+		isMobile:`(max-width: ${800}px) and (prefers-reduced-motion: no-preference)`,
+	},(context)=>{
+ 
+		function getHeight(opt:any){
+			if(opt.isDesktop){
+				return "70%";
+			}else if(opt.isLaptop){
+				return "70%";
+			}else if(opt.isMobile){
+				return "100%"; 
+			}
+		}  
 
-	tl.to(".f-video",{
-			width:"100%", 
-			height:"70%", 
-			borderRadius:'1.5rem',
+		function getWidth(opt:any){
+			if(opt.isDesktop){
+				return "100%";
+			}else if(opt.isLaptop){
+				return "70%";
+			}else if(opt.isMobile){
+				return "70%"; 
+			}
+		}  
+
+		tl.to(".f-video-container",{ 
+			width:getWidth(context.conditions), 
+			height:getHeight(context.conditions), 
 			scrollTrigger: {
-				trigger: ".f-width",
+				trigger: ".f-video-section",
 				start: "center center",
 				end: "=+50%",
 				pin:true,
@@ -67,28 +97,37 @@ const images = [
 				toggleActions: "play none none reverse",
 				markers: false,
 			},
-		}); 
+		});
 
-	tl.to(".f-video-src",{ 
-			borderRadius:'1.5rem',
-			boxShadow:'',
+		tl.to(".f-video",{ 
+			borderRadius:'1.5rem', 
 			scrollTrigger: {
-				trigger: ".f-width",
+				trigger: ".f-video-container",
 				start: "center center",
 				end: "=+50%", 
 				scrub: true, // Smooth scrolling animation
 				toggleActions: "play none none reverse",
 				markers: false,
-			},
+			}
+		})
+
+		return ()=>{
+
+		} 
 	})
+
+	
+		 
+
+	// -=----------------------------------
+	 
 </script>
 
 <Layout title="Welcome to Astro.">
 	<main class="container md:max-w-screen-xl mx-auto">
-		<section
-			id="main"
-			class="h-screen flex justify-center items-center relative"
-		>
+		
+		<!-- hero -->
+		<section id="main" class="h-screen flex justify-center items-center relative">
 			<div class="flex flex-col text-center">
 				<h1 class="text-10xl font-normal tracking-tighter text-white drop-shadow-sm">awearsense</h1>
 				<span class="tracking-wide font-extralight text-white">
@@ -100,128 +139,122 @@ const images = [
 			</div>
 		</section>
 
-		<section class="b h-screen flex items-center">
-			<div class="w-full relative">
-				<h1 class="focus text-largest font-bold tracking-wide text-gray-300">
-					Focus
-				</h1>
-				<p class="text-6xl text-gray-700 absolute">
-					Achive Your Peak <br> Performance.
-				</p>
+		<!-- focus -->
+		<section class="b flex flex-col gap-24 items-center py-32">
+			<div class="w-full flex items-center relative h-halfscreen"> 
+				<div class="flex relative w-full">
+					<h1 class="focus text-largest font-bold tracking-wide text-gray-300 ">
+						Focus
+					</h1>
+					<p class="text-6xl text-gray-700 absolute -bottom-24">
+						achive your peak <br> performance.
+					</p>
+				</div>
+			</div>
+			<div class="w-full flex">
+				<div class="w-full">
+					<video autoplay loop muted class="w-full rounded-xl">
+						<source src="/src/assets/focus.mp4" type="video/mp4" />
+						Your browser does not support the video tag.
+					</video>
+				</div>
+				<div class="w-full px-6 flex flex-col gap-6">
+					<h2 class="text-6xl text-gray-300 font-semibold">section title</h2>
+					<p  class="text-2xl text-gray-600">
+						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, aliquam.
+					</p>
+				</div>
 			</div>
 		</section>
-		<section class="flex">
-			<div class="w-full">
-				<video autoplay loop muted class="w-full rounded-xl">
-					<source src="/src/assets/test-2.mp4" type="video/mp4" />
-					Your browser does not support the video tag.
-				</video>
+		
+		<!-- relax -->
+		<section class="c flex flex-col gap-24  items-center py-32">
+			<div class="w-full flex items-center relative h-halfscreen"> 
+				<div class="flex relative w-full">
+					<h1 class="relax text-largest font-bold tracking-wide text-gray-300">
+						Relax
+					</h1>
+					<p class="text-6xl text-gray-700 absolute -bottom-24">
+						gain mental <br> clarity</p>
+					</p>
+				</div>
 			</div>
-			<div class="w-full px-6 flex flex-col gap-6">
-				<h2 class="text-6xl text-gray-300 font-semibold">Section Title</h2>
-				<p  class="text-2xl text-gray-600">
-					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, aliquam.
-				</p>
+			<div class="w-full flex">
+				<div class="w-full px-6 flex flex-col gap-6">
+					<h2 class="text-6xl text-gray-300 font-semibold">section title</h2>
+					<p  class="text-2xl text-gray-600">
+						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, aliquam.
+					</p>
+				</div>
+				<div class="w-full">
+					<video autoplay loop muted class="w-full rounded-xl">
+						<source src="/src/assets/meditation.mp4" type="video/mp4" />
+						Your browser does not support the video tag.
+					</video>
+				</div>
 			</div>
-		</section>
-		<section class="c h-screen flex items-center">
-			<div class="w-full relative">
-				<h1 class="relax text-largest font-bold tracking-wide text-gray-300">
-					Relax
-				</h1>
-				<p class="text-6xl text-gray-700 absolute">Gain Mental <br> Clarity</p>
+		</section>  
+
+		<!-- control -->
+		<section class="d flex flex-col gap-24 items-center py-32 mb-32">
+			<div class="w-full flex items-center relative h-halfscreen"> 
+				<div class="flex relative w-full">
+					<h1 class="control text-largest font-bold tracking-wide text-gray-300">
+						Interact
+					</h1>
+					<p class="text-6xl text-gray-700 absolute -bottom-16">
+						think & control your device
+					</p>
+				</div>
 			</div>
-		</section> 
-		<section class="flex">
-			<div class="w-full px-6 flex flex-col gap-6">
-				<h2 class="text-6xl text-gray-300 font-semibold">Section Title</h2>
-				<p  class="text-2xl text-gray-600">
-					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, aliquam.
-				</p>
-			</div>
-			<div class="w-full">
-				<video autoplay loop muted class="w-full rounded-xl">
-					<source src="/src/assets/meditation.mp4" type="video/mp4" />
-					Your browser does not support the video tag.
-				</video>
-			</div>
-		</section>
-		<section class="d h-screen flex items-center">
-			<div class="w-full relative">
-				<h1 class="control text-largest font-bold tracking-wide text-gray-300">
-					Control
-				</h1>
-				<p class="text-6xl text-gray-700 absolute">
-					Think & Control Your Device
-				</p>
-			</div>
-		</section>
-		<section class="flex mb-32">
-			<div class="w-full">
-				<video autoplay loop muted class="w-full rounded-xl">
-					<source src="/src/assets/test-2.mp4" type="video/mp4" />
-					Your browser does not support the video tag.
-				</video>
-			</div>
-			<div class="w-full px-6 flex flex-col gap-6">
-				<h2 class="text-6xl text-gray-300 font-semibold">Section Title</h2>
-				<p  class="text-2xl text-gray-600">
-					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, aliquam.
-				</p>
+			<div class="w-full flex">
+				<div class="w-full">
+					<video autoplay loop muted class="w-full rounded-xl">
+						<source src="/src/assets/test-2.mp4" type="video/mp4" />
+						Your browser does not support the video tag.
+					</video>
+				</div>
+				<div class="w-full px-6 flex flex-col gap-6">
+					<h2 class="text-6xl text-gray-300 font-semibold">section title</h2>
+					<p  class="text-2xl text-gray-600">
+						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, aliquam.
+					</p>
+				</div>
 			</div>
 		</section>
 
-		<section class="h-screen relative f-width flex items-center justify-center text-center">
-			 <div class="absolute bg-green-400  -translate-x-1/2 left-1/2 -translate-y-1/2 top-1/2 w-screen h-full f-video"> 
-				<video autoplay loop muted class="f-video-src object-cover w-full h-full">
+		<!-- center video -->
+		<section class="f-video-section h-screen relative flex items-center justify-center text-center">
+			 <div class="f-video-container absolute  -translate-x-1/2 left-1/2 -translate-y-1/2 top-1/2 w-screen h-full">  
+				<video autoplay loop muted class="f-video object-cover w-full h-full">
 					<source src="/src/assets/main.mp4" type="video/mp4" />
 					Your browser does not support the video tag.
 				</video>
 			</div>
 			<h1 class="text-10xl font-normal tracking-tighter text-white drop-shadow-sm video-text">awearsense</h1>
-		</section>
-		<section class="h-screen flex items-center">
-			<div class="grid grid-cols-2 w-full list-items">
-				<div>
-					<h2 class="text-6xl">Section Title 1</h2>
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Totam temporibus, possimus aut numquam iste debitis
-						consectetur nihil quos dolorum, animi iusto expedita
-						ullam veniam cupiditate, odio enim quibusdam non ex.
-					</p>
-				</div> 
-			</div>
-		</section>
-		<section id="partners" class="h-halfscreen flex items-center">
-			<div class="flex w-full gap-16">
-				<div class="flex flex-col gap-4">
-					<h1 class="text-6xl font-semibold tracking-wide">
-						trusted partners
-					</h1>
-					<div class="mb-6">
-						<input
-							type="text"
-							id="large-input"
-							class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-						/>
-					</div>
-				</div>
-				<div
-					class="flex gap-4 justify-between items-center overflow-hidden"
-				>
+		</section> 
+
+		<!-- trusted partners -->
+		<section id="partners" class="flex items-center py-32">
+			<div class="flex flex-col w-full gap-16 text-center">
+				<h1 class="text-6xl font-semibold tracking-wide text-gray-300">
+					trusted partners
+				</h1> 
+				<div class="flex gap-4 justify-between items-center overflow-hidden">
 					{
 						images.map((item) => (
 							<img
 								src={"/src/assets/partners/" + item}
 								alt={item}
-								class="object-contain h-16"
+								class="object-contain h-16 grayscale opacity-50 hover:opacity-100 ease-in duration-300"
 							/>
 						))
 					}
 				</div>
 			</div>
 		</section>
+
+		<!-- technical specifications -->
 		<section id="technical-details" class="py-16">
 			<h2 class="text-4xl font-semibold tracking-wide py-6">
 				technical specifications

@@ -5,31 +5,36 @@ export default {
 		extend: {
 			fontSize: {
 				'10xl': ['10rem', {
-				  lineHeight: '9rem',
-				  letterSpacing: '-0.01em',
-				  fontWeight: '500',
+					lineHeight: '9rem',
+					letterSpacing: '-0.01em',
+					fontWeight: '500',
 				}],
 				'12xl': ['12rem', {
 					lineHeight: '10rem',
 					letterSpacing: '-0.01em',
 					fontWeight: '500',
-				  }],
+				}],
+				'large': ['16rem', {
+					lineHeight: '10rem',
+					letterSpacing: '-0.01em',
+					fontWeight: '500',
+				}],
 				'largest': ['20rem', {
-				lineHeight: '10rem',
-				letterSpacing: '-0.01em',
-				fontWeight: '500',
+					lineHeight: '10rem',
+					letterSpacing: '-0.01em',
+					fontWeight: '500',
 				}]
-			},  
+			},
 			fontFamily: {
 				'DM-Sans': ["DM Sans", "serif"],
 			},
-			height:{
-				'halfscreen':'50vh',
-				'70screen':'70vh', 
-				'90screen':'90vh'
+			height: {
+				'halfscreen': '50vh',
+				'70screen': '70vh',
+				'90screen': '90vh'
 			},
-			colors:{
-				btn:'#00C805'
+			colors: {
+				btn: '#00C805'
 			}
 		},
 	},
