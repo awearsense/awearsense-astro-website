@@ -116,7 +116,97 @@ const images = [
 		} 
 	})
 
-	
+	// specification animation 
+
+	const specs = document.querySelectorAll('.specification');
+
+	tl.from(specs, {
+		opacity: 0,
+		yPercent: 100,
+		duration: 2,
+		stagger: 0.5, // Adjust the stagger time as needed
+		ease: "Power4.easeOut", // You can change the easing function,
+		scrollTrigger: {
+				pin:true,
+				trigger:'#technical-details',
+				start: "top top",
+				end: "+=100%",
+				scrub: true, // Smooth scrolling animation
+				toggleActions: "play none none reverse",
+				markers: true,
+			},
+	})
+	// const scrollWidth = 200;
+	// const targets = gsap.utils.toArray(".specification")
+	// targets.forEach((card, i) => {
+	// 	tl.fromTo(card as HTMLElement,
+	// 		{ 
+	// 			xPercent:-100*i,
+	// 		},
+	// 		{
+	// 		xPercent:0, 
+	// 		ease: "Power4.easeOut", 
+	// 		scrollTrigger: {
+	// 			pin:true,
+	// 			trigger: card as HTMLElement,
+	// 			start: "top top",
+	// 			end: "+=100%",
+	// 			scrub: true, // Smooth scrolling animation
+	// 			toggleActions: "play none none reverse",
+	// 			markers: true,
+	// 		},
+	// 	})
+	// })
+	// targets.forEach((card, i) => {
+    //     tl.fromTo(card as HTMLElement,{
+	// 		xPercent:0,
+	// 		opacity:1,
+	// 	},{ 
+	// 		xPercent:"100%",
+	// 		opacity:0,
+	// 		ease: "Power4.easeOut", 
+	// 		scrollTrigger: {
+	// 			pin:true,
+	// 			trigger: card as HTMLElement,
+	// 			start: "top top",
+	// 			end: "+=100%",
+	// 			scrub: true, // Smooth scrolling animation
+	// 			toggleActions: "play none none reverse",
+	// 			markers: true,
+	// 		},
+	// 	})
+    // });
+
+	// Set the scroll container
+	// ScrollTrigger.create({
+	// 	trigger: '#technical-details', // Replace with your scroll container selector
+	// 	start: 'top top',
+	// 	end: 'bottom bottom',
+	// 	pin: true,
+	// 	markers: true
+	// });
+	 
+	// let scrollWidth =  window.innerWidth;
+
+	// tl.fromTo('.specification',{
+	// 	xPercent:0,
+	// 	opacity:1,
+	// },{ 
+	// 	xPercent:-scrollWidth,
+	// 	opacity:0,
+	// 	ease: "Power4.easeOut",
+	// 	delay:0.5,
+	// 	scrollTrigger: {
+	// 		pin:true,
+	// 		trigger: '#technical-details',
+	// 		start: "top top",
+	// 		end: "+="+scrollWidth,
+	// 		scrub: 1, // Smooth scrolling animation
+	// 		toggleActions: "play none none reverse",
+	// 		markers: true,
+	// 	},
+	// })
+		
 		 
 
 	// -=----------------------------------
@@ -255,62 +345,71 @@ const images = [
 		</section>
 
 		<!-- technical specifications -->
-		<section id="technical-details" class="py-16">
-			<h2 class="text-4xl font-semibold tracking-wide py-6">
-				technical specifications
-			</h2>
-			<div class="flex flex-col border rounded-md">
-				<div class="specification-row">
+		<section id="technical-details" class="h-screen grid grid-cols-[auto,1fr] gap-16 content-center ">
+			<div class="">
+				<h1 class="text-6xl font-semibold tracking-wide text-gray-300">
+					technical <br> specification
+				</h1> 
+			</div>
+			<div class="specifications inline-flex gap-2">
+				<div class="specification">
 					<span>EEG Channel</span>
-					<span>4 + (2 reference)</span>
+					<span class="whitespace-nowrap">4 + (2 reference)</span>
+					<img src="/src/assets/specifications/ear.svg" alt="">
 				</div>
-				<div class="specification-row">
+				<div class="specification">
 					<span>Electrode Type</span>
 					<span>Soft Dry</span>
+					<img src="/src/assets/specifications/signal.svg" alt="">
 				</div>
-				<div class="specification-row">
+				<div class="specification">
 					<span>Channel Location</span>
 					<span>In-ear & Around Ear</span>
+					<img src="/src/assets/specifications/signal.svg" alt="">
 				</div>
-				<div class="specification-row">
+				<div class="specification">
 					<span>Resolution</span>
-					<span>16-bit</span>
+					<span>16-bit</span> 
+					<img src="/src/assets/specifications/signal.svg" alt="">
 				</div>
-				<div class="specification-row">
+				<div class="specification">
 					<span>Sampling Rate</span>
 					<span>250Hz</span>
+					<img src="/src/assets/specifications/signal.svg" alt="">
 				</div>
-				<div class="specification-row">
+				<div class="specification">
 					<span>Sensor</span>
 					<span>3-axis IMU</span>
+					<img src="/src/assets/specifications/imu.svg" alt="">
 				</div>
-				<div class="specification-row">
+				<div class="specification">
 					<span>Connectivity</span>
 					<span>Blutooth Low Energy</span>
+					<img src="/src/assets/specifications/bluetooth.svg" alt="">
 				</div>
-				<div class="specification-row">
+				<div class="specification">
 					<span>Battery Life</span>
 					<span>6 hrs</span>
+					<img src="/src/assets/specifications/battery.svg" alt="">
 				</div>
-				<div class="specification-row">
+				<div class="specification">
 					<span>Audio</span>
-					<span>Stereo Class-D Headphone Amplifier with 98db SNR</span
-					>
+					<span>Stereo Class-D Headphone Amplifier with 98db SNR</span>
 				</div>
-				<div class="specification-row">
+				<div class="specification">
 					<span>Dimensions</span>
 					<span>8" x 6.5" x 3"</span>
+					<img src="/src/assets/specifications/signal.svg" alt="">
 				</div>
-				<div class="specification-row">
+				<div class="specification">
 					<span>Weight</span>
 					<span>15.61g</span>
+					<img src="/src/assets/specifications/weight.svg" alt="">
 				</div>
-				<div class="specification-row border-none">
-					<span>Supported Platform</span>
-					<span class="table-row-item flex flex-col">
-						<span>Windows 10 (64 Bit)</span>
-						<span>Android 5.0 and above</span>
-					</span>
+				<div class="specification">
+					<span>Supported Platform</span> 
+					<span>Windows 10 (64 Bit) <br> Android 5.0 and above</span> 
+					<img src="/src/assets/specifications/signal.svg" alt="">
 				</div>
 			</div>
 		</section>
@@ -331,16 +430,19 @@ const images = [
 		background-position: center;
 		background-size: cover;
 	}
-
-	.specification-row {
-		@apply grid grid-cols-2 border-b border-slate-100 p-4  text-slate-500 dark:text-slate-400;
+ 
+	.specification {
+		@apply flex flex-col p-5 border border-slate-200 rounded-lg w-1/3;
 	}
-
-	/* .table-row-item:nth-child(1){
-		@apply text-slate-600 font-semibold;
-	} */
-
-	.specification-row:nth-child(odd) {
-		@apply bg-slate-50;
+	
+	.specification > span:nth-child(1){
+		@apply text-2xl font-semibold text-gray-400 whitespace-nowrap;
 	}
+	.specification > span:nth-child(2){
+		@apply text-xl font-semibold text-gray-300;
+	}
+	.specification > img{
+		@apply opacity-20 h-full;
+	}
+	 
 </style>
