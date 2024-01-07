@@ -3,19 +3,37 @@ const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1); // remove the first "/"
 
 ---
+<script>
+	const button = document.querySelector<HTMLElement>('#nav-menu');
+	const menu = document.querySelector<HTMLElement>('#menu-option'); 
+	menu!.classList.toggle('hidden');
+	button!.addEventListener('click', () => {
+		menu!.classList.toggle('hidden');
+	});
+	
+</script>
 
-<nav class="fixed left-0 right-0 z-10 bg-white">
+<nav class="fixed left-0 right-0 z-10 bg-white"> 
 	<div class="container md:max-w-screen-xl mx-auto flex items-center justify-between">
 		<a href="/" class="nav-item text-xl text-slate-600 tracking-tight font-medium">awearsense</a>
-		<div class="flex gap-1">
+		<div class="md:flex gap-1 hidden">
 			<a href="/about" class={currentPath === "about" ? "text-btn font-medium nav-item" : "nav-item"} >about</a> 
 			<a href="/science" class={currentPath === "science" ? "text-btn font-medium nav-item" : "nav-item"} >technology</a> 
 			<a href="#partners"  class={currentPath != "" ? "hidden" : "nav-item"} class="nav-item" >partners</a> 
 			<a href="/study" class={currentPath === "study" ? "text-btn font-medium nav-item" : "nav-item"} class="nav-item" >research</a> 
 			<a href="/docs" class={currentPath === "docs" ? "text-btn font-medium nav-item nav-item-inactive" : "nav-item nav-item-inactive"} >docs</a>
 		</div> 
-		<a href="/contact" class="border-2 text-btn flex items-center justify-center px-8 py-2 rounded-full font-medium tracking-tight hover:bg-slate-100">contact us</a>
+		<a href="/contact" class="hidden border-2 text-btn md:flex items-center justify-center px-8 py-2 rounded-full font-medium tracking-tight hover:bg-slate-100">contact us</a>
+		<img id="nav-menu" class="w-14 p-3 object-fill md:hidden" src="/src/assets/menu.svg" alt="">
 	</div>
+	<div id="menu-option" class="flex flex-col gap-1 shadow-md md:hidden">
+		<a href="/about" class={currentPath === "about" ? "text-btn font-medium nav-item" : "nav-item"} >about</a> 
+		<a href="/science" class={currentPath === "science" ? "text-btn font-medium nav-item" : "nav-item"} >technology</a> 
+		<a href="#partners"  class={currentPath != "" ? "hidden" : "nav-item"} class="nav-item" >partners</a> 
+		<a href="/study" class={currentPath === "study" ? "text-btn font-medium nav-item" : "nav-item"} class="nav-item" >research</a> 
+		<a href="/docs" class={currentPath === "docs" ? "text-btn font-medium nav-item nav-item-inactive" : "nav-item nav-item-inactive"} >docs</a>
+		<a href="/contact" class="border-2 text-center text-btn md:flex items-center justify-center px-8 py-2 mx-6 mb-8 rounded-full font-medium tracking-tight hover:bg-slate-100">contact us</a>
+	</div> 
 </nav>
 
 <style>

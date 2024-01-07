@@ -71,7 +71,7 @@ const specsList = [
     },
     {
         "title": "Supported Platform",
-        "value": "Windows 10 (64 Bit) <br> Android 5.0 and above",
+        "value": "Windows 10 (64 Bit) Android 5.0 and above",
         "logo": "signal.svg"
     }
 ]
@@ -92,9 +92,9 @@ const specsList = [
 
 	const tl = gsap.timeline();
 	const msg = [
-		{ parent: ".b", child: ".focus", startPos: "-50%", endPos: "0" },
-		{ parent: ".c", child: ".relax", startPos: "100%", endPos: "0" },
-		{ parent: ".d", child: ".control", startPos: "-50%", endPos: "0" },
+		{ parent: ".focus-section", child: ".focus", startPos: "-50", endPos: "20" },
+		{ parent: ".relax-section", child: ".relax", startPos: "50", endPos: "-20" },
+		{ parent: ".interact-section", child: ".control", startPos: "-50", endPos: "20" },
 	];
  
 	msg.forEach((elm) => {
@@ -102,10 +102,10 @@ const specsList = [
 		tl.fromTo(
 			elm.child,
 			{
-				x: elm.startPos,
+				xPercent: elm.startPos,
 			},
 			{
-				x: elm.endPos,
+				xPercent: elm.endPos,
 				ease: "Power4.easeOut",
 				scrollTrigger: {
 					trigger: elm.parent,
@@ -123,17 +123,17 @@ const specsList = [
 
 	mm.add({
 		isDesktop:`(min-width: ${2000}px) and (prefers-reduced-motion: no-preference)`,
-		isLaptop:`(max-width: ${1920}px) and (prefers-reduced-motion: no-preference)`,
+		isLaptop:`(min-width: ${1000}px) and (prefers-reduced-motion: no-preference)`,
 		isMobile:`(max-width: ${800}px) and (prefers-reduced-motion: no-preference)`,
 	},(context)=>{
- 
+  
 		function getHeight(opt:any){
 			if(opt.isDesktop){
 				return "70%";
 			}else if(opt.isLaptop){
 				return "70%";
 			}else if(opt.isMobile){
-				return "100%"; 
+				return "80%"; 
 			}
 		}  
 
@@ -143,13 +143,17 @@ const specsList = [
 			}else if(opt.isLaptop){
 				return "70%";
 			}else if(opt.isMobile){
-				return "70%"; 
+				return "100%"; 
 			}
 		}  
 
+		const w = getWidth(context.conditions)
+		const h = getHeight(context.conditions)
+		console.log(context.conditions,w,h)
+
 		tl.to(".f-video-container",{ 
-			width:getWidth(context.conditions), 
-			height:getHeight(context.conditions), 
+			width:w, 
+			height:h, 
 			scrollTrigger: {
 				trigger: ".f-video-section",
 				start: "center center",
@@ -179,22 +183,24 @@ const specsList = [
 	})
 
 	// client logos
-	const partners = document.querySelectorAll('.partner-logo');
-	tl.from(partners,{
+	const partners = document.querySelectorAll('.partners-logo');
+	gsap.from('.partners-logo',{
 		opacity: 0,
-		yPercent:100,   
-		duration: 2, 
+		yPercent:100,
+		duration: 1,
+		stagger: 0.3, // Adjust the stagger time as needed
 		ease: "Power4.easeOut", // You can change the easing function,
 		scrollTrigger: {
 			trigger: "#partners", // make .panel2 the trigger
-			start: "top top", // 10% of .panel2 enters the bottom of the viewport
-			toggleActions: "play none none reverse",
-			// Whatever other ScrollTrigger vars you need here
+			pin:true,
+			start: "top top", // 10% of .panel2 enters the bottom of the viewport 
+			end:"+=50%",
+			toggleActions: "play none none reverse", 
 		}
 	})
 
 	// specification animation  
-	const specs = document.querySelectorAll('.specification');
+	const specs = document.querySelectorAll('.specification'); 
 	gsap.timeline({
 		scrollTrigger: {
 			pin:true,
@@ -203,31 +209,31 @@ const specsList = [
 			end: "+=200%",
 			scrub: true, // Smooth scrolling animation
 			toggleActions: "play none none reverse",
-			markers: true,
 		},
-	}).from(specs,{
+	}).from(specs,{ 
 		opacity: 0,
-		yPercent:100,
+		yPercent:100, 
 		duration: 2,
-		stagger: 0.5, // Adjust the stagger time as needed
+		stagger: 0.1, // Adjust the stagger time as needed
 		ease: "Power4.easeOut", // You can change the easing function,
-	}).to('#technical-details',{ 
-		xPercent:-200, 
-		duration:2,
-		stagger: 0.5, // Adjust the stagger time as needed
-	 	ease: "Power4.easeOut", // You can change the easing function,
+	}).to('.specifications',{ 
+		xPercent: -250,
+		duration: 1,
+		stagger: 0.9, // Adjust the stagger time as needed
+		scrub: 4,
+		ease: "Power4.easeOut" // You can change the easing function,
 	})
 	  
 	// -=---------------------------------- 
 </script>
 
 <Layout title="Welcome to Astro.">
-	<main class="container md:max-w-screen-xl mx-auto">
+	<main class="container md:max-w-screen-xl mx-auto px-5 md:px-0">
 		
 		<!-- hero -->
 		<section id="main" class="h-screen flex justify-center items-center relative">
 			<div class="flex flex-col text-center">
-				<h1 class="text-10xl font-normal tracking-tighter text-white drop-shadow-sm">awearsense</h1>
+				<h1 class="text-7xl md:text-10xl font-normal tracking-tighter text-white drop-shadow-sm">awearsense</h1>
 				<span class="tracking-wide font-extralight text-white">
 					Meet our first generation of
 					<span class="font-medium">neural interface</span>. Control
@@ -238,27 +244,27 @@ const specsList = [
 		</section>
 
 		<!-- focus -->
-		<section class="b flex flex-col gap-24 items-center py-32">
+		<section class="focus-section flex flex-col md:gap-24 items-center md:py-32">
 			<div class="w-full flex items-center relative h-halfscreen"> 
 				<div class="flex relative w-full">
-					<h1 class="focus text-largest font-bold tracking-wide text-gray-300 ">
+					<h1 class="focus text-12xl md:text-largest font-bold tracking-wide text-slate-200">
 						Focus
 					</h1>
-					<p class="text-6xl text-gray-700 absolute -bottom-24">
+					<p class="text-5xl md:text-6xl text-gray-700 absolute -bottom-14 md:-bottom-24">
 						achive your peak <br> performance.
 					</p>
 				</div>
 			</div>
-			<div class="w-full flex">
+			<div class="w-full flex flex-col gap-4 md:gap-0 md:flex-row">
 				<div class="w-full">
 					<video autoplay loop muted class="w-full rounded-xl">
 						<source src="/src/assets/focus.mp4" type="video/mp4" />
 						Your browser does not support the video tag.
 					</video>
 				</div>
-				<div class="w-full px-6 flex flex-col gap-6">
-					<h2 class="text-6xl text-gray-300 font-semibold">section title</h2>
-					<p  class="text-2xl text-gray-600">
+				<div class="w-full md:px-6 flex flex-col gap-6">
+					<h2 class="text-6xl text-slate-300 font-semibold">section title</h2>
+					<p  class="text-2xl text-slate-600">
 						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, aliquam.
 					</p>
 				</div>
@@ -266,21 +272,21 @@ const specsList = [
 		</section>
 		
 		<!-- relax -->
-		<section class="c flex flex-col gap-24  items-center py-32">
+		<section class="relax-section flex flex-col md:gap-24  items-center md:py-32">
 			<div class="w-full flex items-center relative h-halfscreen"> 
 				<div class="flex relative w-full">
-					<h1 class="relax text-largest font-bold tracking-wide text-gray-300">
+					<h1 class="relax text-12xl md:text-largest font-bold tracking-wide text-slate-200">
 						Relax
 					</h1>
-					<p class="text-6xl text-gray-700 absolute -bottom-24">
+					<p class="text-5xl md:text-6xl text-gray-700 absolute -bottom-14 md:-bottom-24">
 						gain mental <br> clarity</p>
 					</p>
 				</div>
 			</div>
-			<div class="w-full flex">
-				<div class="w-full px-6 flex flex-col gap-6">
-					<h2 class="text-6xl text-gray-300 font-semibold">section title</h2>
-					<p  class="text-2xl text-gray-600">
+			<div class="w-full flex flex-col-reverse gap-4 md:gap-0 md:flex-row">
+				<div class="w-full md:px-6 flex flex-col gap-6">
+					<h2 class="text-6xl text-slate-300 font-semibold">section title</h2>
+					<p  class="text-2xl text-slate-600">
 						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, aliquam.
 					</p>
 				</div>
@@ -294,27 +300,27 @@ const specsList = [
 		</section>  
 
 		<!-- control -->
-		<section class="d flex flex-col gap-24 items-center py-32 mb-32">
+		<section class="interact-section flex flex-col md:gap-24 items-center md:py-32 mb-32">
 			<div class="w-full flex items-center relative h-halfscreen"> 
 				<div class="flex relative w-full">
-					<h1 class="control text-largest font-bold tracking-wide text-gray-300">
+					<h1 class="control text-12xl md:text-largest font-bold tracking-wide text-slate-200">
 						Interact
 					</h1>
-					<p class="text-6xl text-gray-700 absolute -bottom-16">
-						think & control your device
+					<p class="text-5xl md:text-6xl text-gray-700 absolute -bottom-14 md:-bottom-16">
+						think & control your device 
 					</p>
 				</div>
 			</div>
-			<div class="w-full flex">
+			<div class="w-full flex flex-col gap-4 md:gap-0 md:flex-row">
 				<div class="w-full">
 					<video autoplay loop muted class="w-full rounded-xl">
 						<source src="/src/assets/test-2.mp4" type="video/mp4" />
 						Your browser does not support the video tag.
 					</video>
 				</div>
-				<div class="w-full px-6 flex flex-col gap-6">
-					<h2 class="text-6xl text-gray-300 font-semibold">section title</h2>
-					<p  class="text-2xl text-gray-600">
+				<div class="w-full md:px-6 flex flex-col gap-6">
+					<h2 class="text-6xl text-slate-300 font-semibold">section title</h2>
+					<p  class="text-2xl text-slate-600">
 						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, aliquam.
 					</p>
 				</div>
@@ -329,44 +335,49 @@ const specsList = [
 					Your browser does not support the video tag.
 				</video>
 			</div>
-			<h1 class="text-10xl font-normal tracking-tighter text-white drop-shadow-sm video-text">awearsense</h1>
+			<h1 class="text-7xl md:text-10xl font-normal tracking-tighter text-white drop-shadow-sm">awearsense</h1>
 		</section> 
 
 		<!-- trusted partners -->
-		<section id="partners" class="flex items-center h-screen bg-red-500">
-			<div class="flex flex-col w-full gap-16 text-center">
-				<h1 class="text-6xl font-semibold tracking-wide text-gray-300">
+		<section id="partners" class="flex flex-col justify-center gap-16 md:h-screen py-32">
+			<div class="flex flex-col w-full gap-16 md:text-center">
+				<h1 class="text-6xl font-semibold tracking-wide text-slate-300">
 					trusted partners
 				</h1> 
-				<div class="flex gap-4 justify-between items-center overflow-hidden">
-					{
-						images.map((item) => (
+			</div>
+			<div class="grid grid-cols-2 md:flex gap-4 md:justify-between md:items-center">
+				{
+					images.map((item) => (
+						<div class="partners-logo h-16 border">
 							<img
-								src={"/src/assets/partners/" + item}
-								alt={item}
-								class="partner-logo object-contain h-16 grayscale opacity-50 hover:opacity-100 ease-in duration-300"
-							/>
-						))
-					}
-				</div>
+							class="object-fit h-full mx-auto grayscale opacity-50 hover:opacity-100 ease-in duration-300"
+							src={"/src/assets/partners/" + item}
+							alt={item} 
+						/>
+						</div>
+					))
+				}
 			</div>
 		</section>
 
 		<!-- technical specifications -->
-		<section id="technical-details" class="h-screen grid grid-cols-[auto,1fr] gap-16 content-center">
+		<section id="technical-details" class="h-screen flex md-flex-row flex-col gap-8 justify-center md:items-center">
 			<div class="section-title flex items-center">
 				<h1 class="text-6xl font-semibold tracking-wide text-gray-300">
 					technical <br> specification
 				</h1> 
 			</div>
-			<div class="flex items-center">
-				<div class="specifications flex gap-2 w-1/3 h-1/2">
+			<div class="specifications">
+				<div class="flex gap-2 w-full">
 					{
 						specsList.map((item)=>(
-							<div class="specification">
-								<span>{item.title}</span>
-								<span class="whitespace-nowrap">{item.value}</span>
-								<img
+							<div class="flex-1 specification">
+								<div class="flex flex-col">
+									<span class="card-title">{item.title}</span> 
+									<span class="card-value">{item.value}</span>
+								</div>
+								<img 
+									class="spec-logo"
 									src={"/src/assets/specifications/" + item.logo}
 									alt={item.title}/>
 							</div>
@@ -394,17 +405,17 @@ const specsList = [
 	}
  
 	.specification {
-		@apply p-5 border border-slate-200 rounded-lg flex flex-col;
+		@apply p-2 md:p-5 border border-slate-200 rounded-lg flex flex-col justify-between; 
 	}
 	
-	.specification > span:nth-child(1){
-		@apply text-2xl font-semibold text-gray-400;
+	.card-title{
+		@apply text-xs md:text-base font-semibold text-gray-300;
 	}
-	.specification > span:nth-child(2){
-		@apply text-xl font-semibold text-gray-300;
+	.card-value{
+		@apply text-xs md:text-base font-semibold text-gray-400;
 	}
-	.specification > img{
-		@apply opacity-20 pt-16;
+	.spec-logo{
+		@apply opacity-20 h-16 md:h-24 self-end;
 	}
 	 
 </style>

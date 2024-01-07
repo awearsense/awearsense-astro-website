@@ -22,7 +22,7 @@ export default {
 				'largest': ['20rem', {
 					lineHeight: '10rem',
 					letterSpacing: '-0.01em',
-					fontWeight: '500',
+					fontWeight: '800',
 				}]
 			},
 			fontFamily: {
