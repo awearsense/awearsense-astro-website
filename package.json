@@ -9,6 +9,10 @@
     "preview": "astro preview",
     "astro": "astro"
   },
+  "repository": {
+    "type": "git",
+      "url": "https://github.com/awearsense/awearsense-website.git"
+  },
   "dependencies": {
     "@astrojs/check": "^0.4.1",
     "@astrojs/tailwind": "^5.1.0",
