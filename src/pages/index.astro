@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro'; 
-import  specsList from '../content/specs.json'
+import  specsList from '../content/specs.json';
+import SignupForm from '../components/SignupForm.astro';
 
 const images = [
 	"logo-nsrcel.png",
@@ -24,9 +25,9 @@ const images = [
 
 	const tl = gsap.timeline();
 	const msg = [
-		{ parent: ".focus-section", child: ".focus", startPos: "-50", endPos: "20" },
-		{ parent: ".relax-section", child: ".relax", startPos: "50", endPos: "-20" },
-		{ parent: ".interact-section", child: ".control", startPos: "-50", endPos: "20" },
+		{ parent: ".focus-section", child: ".focus", startPos: "-50", endPos: "10" },
+		{ parent: ".relax-section", child: ".relax", startPos: "50", endPos: "-10" },
+		{ parent: ".interact-section", child: ".control", startPos: "-50", endPos: "10" },
 	];
  
 	msg.forEach((elm) => {
@@ -115,7 +116,7 @@ const images = [
 	})
 
 	// client logos
-	const partners = document.querySelectorAll('.partners-logo');
+	// const partners = document.querySelectorAll('.partners-logo');
 	gsap.from('.partners-logo',{
 		opacity: 0,
 		yPercent:100,
@@ -132,34 +133,59 @@ const images = [
 	})
 
 	// specification animation  
-	const specs = document.querySelectorAll('.specification'); 
+	// const specs = document.querySelectorAll('.specification'); 
+	// gsap.timeline({
+	// 	scrollTrigger: {
+	// 		pin:true,
+	// 		trigger:'#technical-details',
+	// 		start: "top top",
+	// 		end: "+=200%",
+	// 		scrub: true, // Smooth scrolling animation
+	// 		toggleActions: "play none none reverse",
+	// 	},
+	// }).from(specs,{ 
+	// 	opacity: 0,
+	// 	yPercent:100, 
+	// 	duration: 2,
+	// 	stagger: 0.5, // Adjust the stagger time as needed
+	// 	ease: "Power4.easeOut", // You can change the easing function,
+	// }).to('.specifications',{ 
+	// 	xPercent: -250, 
+	// 	stagger: 0.9, // Adjust the stagger time as needed
+	// 	scrub: 1,
+	// 	ease: "Power4.easeOut" // You can change the easing function,
+	// })
+	const cards = gsap.utils.toArray('.cards') 
+	const parentWidth = document.getElementById('parent');
+	const childWidth = document.getElementById('child');
+	const amountToScroll = childWidth.offsetWidth - parentWidth.offsetWidth;
+	console.clear();
+	console.log(amountToScroll);
 	gsap.timeline({
-		scrollTrigger: {
-			pin:true,
-			trigger:'#technical-details',
-			start: "top top",
-			end: "+=200%",
-			scrub: true, // Smooth scrolling animation
-			toggleActions: "play none none reverse",
-		},
-	}).from(specs,{ 
-		opacity: 0,
-		yPercent:100, 
-		duration: 2,
-		stagger: 0.1, // Adjust the stagger time as needed
-		ease: "Power4.easeOut", // You can change the easing function,
-	}).to('.specifications',{ 
-		xPercent: -250,
-		duration: 1,
-		stagger: 0.9, // Adjust the stagger time as needed
-		scrub: 4,
-		ease: "Power4.easeOut" // You can change the easing function,
-	})
+	scrollTrigger: {
+				trigger:'#parent',
+				start: "center center",
+				end: "+=200%",
+				pin:'#technical-details', // pin:'.outermost-parent'// didn't work. It is leaving huge white space
+				scrub: 1, // Smooth scrolling animation
+				toggleActions: "play none none reverse",
+		markers:true
+			}
+	}).from('.card',{ 
+			opacity: 0,
+			yPercent:100, 
+			duration: 1,
+			stagger: 0.2, // Adjust the stagger time as needed
+			ease: "Power4.easeOut", // You can change the easing function,
+		}).to('#child',{
+		x:-amountToScroll,  
+		ease: "none", 
+		})
 	  
 	// -=---------------------------------- 
 </script>
 
-<Layout title="Welcome to awearsense">
+<Layout title="awearsense">
 	<main class="container md:max-w-screen-xl mx-auto px-5 md:px-0">
 		 <!-- hero -->
 		<section id="main" class="h-screen flex justify-center items-center relative">
@@ -171,6 +197,7 @@ const images = [
 					digital devices with your
 					<span class="font-medium">brain</span>
 				</span>
+				<SignupForm/>
 			</div>
 		</section>
 		<!-- focus -->
@@ -185,20 +212,12 @@ const images = [
 					</p>
 				</div>
 			</div>
-			<div class="w-full flex flex-col gap-4 md:gap-0 md:flex-row">
-				<div class="w-full">
-					<video autoplay loop muted class="w-full rounded-xl">
-						<source src="/src/assets/focus.mp4" type="video/mp4" />
-						Your browser does not support the video tag.
-					</video>
-				</div>
-				<div class="w-full md:px-6 flex flex-col gap-6">
-					<h2 class="text-6xl text-slate-300 font-semibold">section title</h2>
-					<p  class="text-2xl text-slate-600">
-						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, aliquam.
-					</p>
-				</div>
-			</div>
+			<div class="w-full flex justify-center">
+				<video autoplay loop muted class="h-halfscreen rounded-xl">
+					<source src="/src/assets/focus.mp4" type="video/mp4" />
+					Your browser does not support the video tag.
+				</video>
+			</div> 
 		</section>
 		<!-- relax -->
 		<section class="relax-section flex flex-col md:gap-24  items-center md:py-32">
@@ -212,20 +231,13 @@ const images = [
 					</p>
 				</div>
 			</div>
-			<div class="w-full flex flex-col-reverse gap-4 md:gap-0 md:flex-row">
-				<div class="w-full md:px-6 flex flex-col gap-6">
-					<h2 class="text-6xl text-slate-300 font-semibold">section title</h2>
-					<p  class="text-2xl text-slate-600">
-						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, aliquam.
-					</p>
-				</div>
-				<div class="w-full">
-					<video autoplay loop muted class="w-full rounded-xl">
-						<source src="/src/assets/meditation.mp4" type="video/mp4" />
-						Your browser does not support the video tag.
-					</video>
-				</div>
-			</div>
+			
+			<div class="w-full flex justify-center">
+				<video autoplay loop muted class="h-halfscreen rounded-xl">
+					<source src="/src/assets/relax.mp4" type="video/mp4" />
+					Your browser does not support the video tag.
+				</video>
+			</div> 
 		</section>  
 
 		<!-- control -->
@@ -240,20 +252,12 @@ const images = [
 					</p>
 				</div>
 			</div>
-			<div class="w-full flex flex-col gap-4 md:gap-0 md:flex-row">
-				<div class="w-full">
-					<video autoplay loop muted class="w-full rounded-xl">
-						<source src="/src/assets/test-2.mp4" type="video/mp4" />
-						Your browser does not support the video tag.
-					</video>
-				</div>
-				<div class="w-full md:px-6 flex flex-col gap-6">
-					<h2 class="text-6xl text-slate-300 font-semibold">section title</h2>
-					<p  class="text-2xl text-slate-600">
-						Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, aliquam.
-					</p>
-				</div>
-			</div>
+			<div class="w-full flex justify-center">
+				<video autoplay loop muted class="h-halfscreen rounded-xl">
+					<source src="/src/assets/focus.mp4" type="video/mp4" />
+					Your browser does not support the video tag.
+				</video>
+			</div> 
 		</section>
 
 		<!-- center video -->
@@ -290,17 +294,17 @@ const images = [
 		</section>
 
 		<!-- technical specifications -->
-		<section id="technical-details" class="h-screen flex md-flex-row flex-col gap-8 justify-center md:items-center">
+		<section id="technical-details" class="flex flex-col gap-8 h-screen">
 			<div class="section-title flex items-center">
 				<h1 class="text-6xl font-semibold tracking-wide text-gray-300">
-					technical <br> specification
+					technical specification
 				</h1> 
 			</div>
-			<div class="specifications">
-				<div class="flex gap-2 w-full">
+			<div id="parent" class="w-full py-16">
+				<div id="child" class="flex gap-4 max-h-fit"> 
 					{
 						specsList.map((item)=>(
-							<div class="flex-1 specification">
+							<div class="card h-full flex-1">
 								<div class="flex flex-col">
 									<span class="card-title">{item.title}</span> 
 									<span class="card-value">{item.value}</span>
@@ -332,9 +336,14 @@ const images = [
 		background-position: center;
 		background-size: cover;
 	}
- 
-	.specification {
-		@apply p-2 md:p-5 border border-slate-200 rounded-lg flex flex-col justify-between; 
+
+	#child{ 
+		width: 250%;
+		height:20rem; 
+	} 
+
+	.card{
+		@apply border rounded-lg md:p-8 flex-1;
 	}
 	
 	.card-title{
@@ -346,4 +355,5 @@ const images = [
 	.spec-logo{
 		@apply opacity-20 h-16 md:h-24 self-end;
 	}
+ 
 </style>
