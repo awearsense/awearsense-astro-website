@@ -1,23 +1,88 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro'; 
+
+import abhinav from '../assets/team/abhinav.jpg';
+import nabarun from '../assets/team/nabarun.jpg';
+import pritam from '../assets/team/pritam.jpg';
+
+const founders = [
+	{
+		name:"abhinav",
+		img:abhinav,
+		social:["",""]
+	},
+	{
+		name:"nabarun",
+		img:nabarun,
+		social:["",""]
+	},{
+		name:"pritam",
+		img:pritam,
+		social:["",""]
+	}
+	];
 ---
+
+<script>
+
+</script>
 
 <Layout title="About us">
 	<main class="container md:max-w-screen-xl mx-auto">
-		<section id="main" class="h-screen flex justify-center items-center">
-			<div class="flex flex-col text-center text-slate-500">
-				<span class="text-10xl tracking-tighter">about us</span>
-				<span class="text-xl tracking-wide font-extralight opacity-30">neural interface for your digital devices</span>
+		<section id="main" class="h-screen flex items-center">
+			<div class="flex flex-col">
+				<span class="text-8xl tracking-tighter">team of passionate individuals, crafting next generation of interaction.</span>
+				<span class="text-3xl tracking-wide linear-gradient">neural interface for your digital devices</span>
 			</div> 
 		</section> 
+		<section class="founders h-screen flex flex-col gap-16 py-32 relative">
+			<h2 class="text-8xl">founders</h2> 
+			<div class="flex gap-16 w-full">
+				{
+					founders.map((founder)=>{
+						<div class="flex-1">
+							<h1 class="text-4xl font-semibold">{founder.name}</h1>
+							<div class="py-5 flex gap-2">
+								<a target="_blank" class="items" href="https://www.linkedin.com/company/awearsense">linkedin</a>
+								<a target="_blank" class="items" href="">github</a>   
+								<a target="_blank" class="items" href="">twitter</a>   
+							</div>
+							<Image
+								src={founder.img}
+								alt=""
+							/>
+						</div> 
+					})
+				}
+			</div>
+		</section>
 	</main>
 </Layout>
 
 <style>
-#main{
-	background-image: url('../assets/waves.svg');
-	background-repeat: no-repeat no-repeat;
-	background-position: center;
-}
+	#main{ 
+		background-repeat: no-repeat no-repeat;
+		background-position: center;
+	}
+	
+	/* .founders::before{
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%; 
+		transform: translate(-50%,-50%);
+		width: 200vw;
+		height: 100%;
+		z-index: -1;
+		background-color: #f5be66;
+	} */
+
+
+	.linear-gradient{
+		background:  linear-gradient(270deg, #ff38bb 4.25%, #ff8038 51.61%, #f5be66 80.43%, #f4dca8 93.03%);
+		-webkit-background-clip: text;
+  		-webkit-text-fill-color: transparent;
+	}
 </style>
  

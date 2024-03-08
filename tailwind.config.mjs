@@ -34,7 +34,10 @@ export default {
 				'90screen': '90vh'
 			},
 			colors: {
-				btn: '#00C805'
+				btn: '#ff8038',
+				txt:'#ff8038',
+				bglight:'#f6f6ef',
+				bgdark:"#f4dca8"
 			}
 		},
 	},

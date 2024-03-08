@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro'; 
 import  specsList from '../content/specs.json';
 import SignupForm from '../components/SignupForm.astro';
+import Insights from '../components/Insights.astro';
+import { Image } from "astro:assets";
 
 const images = [
 	"logo-nsrcel.png",
@@ -117,69 +119,46 @@ const images = [
 
 	// client logos
 	// const partners = document.querySelectorAll('.partners-logo');
-	gsap.from('.partners-logo',{
-		opacity: 0,
-		yPercent:100,
-		duration: 1,
-		stagger: 0.3, // Adjust the stagger time as needed
-		ease: "Power4.easeOut", // You can change the easing function,
-		scrollTrigger: {
-			trigger: "#partners", // make .panel2 the trigger
-			pin:true,
-			start: "top top", // 10% of .panel2 enters the bottom of the viewport 
-			end:"+=50%",
-			toggleActions: "play none none reverse", 
-		}
-	})
-
-	// specification animation  
-	// const specs = document.querySelectorAll('.specification'); 
-	// gsap.timeline({
-	// 	scrollTrigger: {
-	// 		pin:true,
-	// 		trigger:'#technical-details',
-	// 		start: "top top",
-	// 		end: "+=200%",
-	// 		scrub: true, // Smooth scrolling animation
-	// 		toggleActions: "play none none reverse",
-	// 	},
-	// }).from(specs,{ 
+	// gsap.from('.partners-logo',{
 	// 	opacity: 0,
-	// 	yPercent:100, 
-	// 	duration: 2,
-	// 	stagger: 0.5, // Adjust the stagger time as needed
+	// 	yPercent:100,
+	// 	duration: 1,
+	// 	stagger: 0.3, // Adjust the stagger time as needed
 	// 	ease: "Power4.easeOut", // You can change the easing function,
-	// }).to('.specifications',{ 
-	// 	xPercent: -250, 
-	// 	stagger: 0.9, // Adjust the stagger time as needed
-	// 	scrub: 1,
-	// 	ease: "Power4.easeOut" // You can change the easing function,
+	// 	scrollTrigger: {
+	// 		trigger: "#partners", // make .panel2 the trigger
+	// 		pin:true,
+	// 		start: "top top", // 10% of .panel2 enters the bottom of the viewport 
+	// 		end:"+=50%",
+	// 		toggleActions: "play none none reverse", 
+	// 	}
 	// })
-	const cards = gsap.utils.toArray('.cards') 
+
+	// specification animation    
 	const parentWidth = document.getElementById('parent');
 	const childWidth = document.getElementById('child');
-	const amountToScroll = childWidth.offsetWidth - parentWidth.offsetWidth;
-	console.clear();
-	console.log(amountToScroll);
+	const amountToScroll = childWidth!.offsetWidth - parentWidth!.offsetWidth;
+ 
 	gsap.timeline({
 	scrollTrigger: {
 				trigger:'#parent',
 				start: "center center",
-				end: "+=200%",
+				end: "+=300%",
 				pin:'#technical-details', // pin:'.outermost-parent'// didn't work. It is leaving huge white space
 				scrub: 1, // Smooth scrolling animation
 				toggleActions: "play none none reverse",
-		markers:true
+				markers:false
 			}
 	}).from('.card',{ 
 			opacity: 0,
 			yPercent:100, 
 			duration: 1,
-			stagger: 0.2, // Adjust the stagger time as needed
+			stagger: 0.1, // Adjust the stagger time as needed
 			ease: "Power4.easeOut", // You can change the easing function,
 		}).to('#child',{
-		x:-amountToScroll,  
-		ease: "none", 
+			x:-amountToScroll,  
+			stagger: 0.1, // Adjust the stagger time as needed
+			ease: "none", // You can change the easing function,
 		})
 	  
 	// -=---------------------------------- 
@@ -191,74 +170,30 @@ const images = [
 		<section id="main" class="h-screen flex justify-center items-center relative">
 			<div class="flex flex-col text-center">
 				<h1 class="text-7xl md:text-10xl font-normal tracking-tighter text-white drop-shadow-sm">awearsense</h1>
-				<span class="tracking-wide font-extralight text-white">
+				<span class="tracking-wide linear-gradient">
 					Meet our first generation of
-					<span class="font-medium">neural interface</span>. Control
+					<span class="font-semibold">neural interface</span>. Control
 					digital devices with your
-					<span class="font-medium">brain</span>
+					<span class="font-semibold">brain</span>
 				</span>
 				<SignupForm/>
 			</div>
 		</section>
 		<!-- focus -->
-		<section class="focus-section flex flex-col md:gap-24 items-center md:py-32">
-			<div class="w-full flex items-center relative h-halfscreen"> 
-				<div class="flex relative w-full">
-					<h1 class="focus text-12xl md:text-largest font-bold tracking-wide text-slate-200">
-						Focus
-					</h1>
-					<p class="text-5xl md:text-6xl text-gray-700 absolute -bottom-14 md:-bottom-24">
-						achive your peak <br> performance.
-					</p>
-				</div>
-			</div>
-			<div class="w-full flex justify-center">
-				<video autoplay loop muted class="h-halfscreen rounded-xl">
-					<source src="/src/assets/focus.mp4" type="video/mp4" />
-					Your browser does not support the video tag.
-				</video>
-			</div> 
-		</section>
+		<Insights
+			title="Focus",
+    		description="achive your peak <br/> performance."
+		/> 
 		<!-- relax -->
-		<section class="relax-section flex flex-col md:gap-24  items-center md:py-32">
-			<div class="w-full flex items-center relative h-halfscreen"> 
-				<div class="flex relative w-full">
-					<h1 class="relax text-12xl md:text-largest font-bold tracking-wide text-slate-200">
-						Relax
-					</h1>
-					<p class="text-5xl md:text-6xl text-gray-700 absolute -bottom-14 md:-bottom-24">
-						gain mental <br> clarity</p>
-					</p>
-				</div>
-			</div>
-			
-			<div class="w-full flex justify-center">
-				<video autoplay loop muted class="h-halfscreen rounded-xl">
-					<source src="/src/assets/relax.mp4" type="video/mp4" />
-					Your browser does not support the video tag.
-				</video>
-			</div> 
-		</section>  
-
+		<Insights
+			title="Relax",
+    		description="gain mental <br> clarity."
+		/>  
 		<!-- control -->
-		<section class="interact-section flex flex-col md:gap-24 items-center md:py-32 mb-32">
-			<div class="w-full flex items-center relative h-halfscreen"> 
-				<div class="flex relative w-full">
-					<h1 class="control text-12xl md:text-largest font-bold tracking-wide text-slate-200">
-						Interact
-					</h1>
-					<p class="text-5xl md:text-6xl text-gray-700 absolute -bottom-14 md:-bottom-16">
-						think & control your device 
-					</p>
-				</div>
-			</div>
-			<div class="w-full flex justify-center">
-				<video autoplay loop muted class="h-halfscreen rounded-xl">
-					<source src="/src/assets/focus.mp4" type="video/mp4" />
-					Your browser does not support the video tag.
-				</video>
-			</div> 
-		</section>
+		<Insights
+			title="Interact",
+    		description="think & control <br/> your device."
+		/>   
 
 		<!-- center video -->
 		<section class="f-video-section h-screen relative flex items-center justify-center text-center">
@@ -271,8 +206,38 @@ const images = [
 		   <h1 class="text-7xl md:text-10xl font-normal tracking-tighter text-white drop-shadow-sm">awearsense</h1>
 	   </section> 
 
+		<!-- technical specifications -->
+		<section id="technical-details" class="flex flex-col gap-8 h-screen">
+			<div class="section-title flex items-center">
+				<h1 class="text-6xl tracking-wide">
+					technical specification
+				</h1> 
+			</div>
+			<div id="parent" class="w-full">
+				<div id="child" class="flex gap-4 max-h-fit"> 
+					{
+						specsList.map((item)=>(
+							<div class="card h-full flex-1 flex flex-col justify-between bg-white">
+								<div class="flex flex-col">
+									<span class="card-title">{item.title}</span> 
+									<span class="card-value linear-gradient">{item.value}</span>
+								</div>
+								<div>
+									<img 
+										class="spec-logo linear-gradient"
+										src={"/src/assets/specifications/" + item.logo}
+										alt={item.title}/>
+								</div>
+							</div>
+						))
+					}  
+				</div>
+			</div>
+		</section>
+		
+
 	   <!-- trusted partners -->
-		<section id="partners" class="flex flex-col justify-center gap-16 md:h-screen py-32">
+	   <section id="partners" class="flex flex-col justify-center gap-16 md:h-screen py-32">
 			<div class="flex flex-col w-full gap-16 md:text-center">
 				<h1 class="text-6xl font-semibold tracking-wide text-slate-300">
 					trusted partners
@@ -290,33 +255,6 @@ const images = [
 						</div>
 					))
 				}
-			</div>
-		</section>
-
-		<!-- technical specifications -->
-		<section id="technical-details" class="flex flex-col gap-8 h-screen">
-			<div class="section-title flex items-center">
-				<h1 class="text-6xl font-semibold tracking-wide text-gray-300">
-					technical specification
-				</h1> 
-			</div>
-			<div id="parent" class="w-full py-16">
-				<div id="child" class="flex gap-4 max-h-fit"> 
-					{
-						specsList.map((item)=>(
-							<div class="card h-full flex-1">
-								<div class="flex flex-col">
-									<span class="card-title">{item.title}</span> 
-									<span class="card-value">{item.value}</span>
-								</div>
-								<img 
-									class="spec-logo"
-									src={"/src/assets/specifications/" + item.logo}
-									alt={item.title}/>
-							</div>
-						))
-					}  
-				</div>
 			</div>
 		</section>
 	</main>
@@ -343,17 +281,23 @@ const images = [
 	} 
 
 	.card{
-		@apply border rounded-lg md:p-8 flex-1;
+		@apply rounded-lg md:p-8 flex-1;
 	}
 	
 	.card-title{
-		@apply text-xs md:text-base font-semibold text-gray-300;
+		@apply text-xs md:text-base font-semibold;
 	}
 	.card-value{
-		@apply text-xs md:text-base font-semibold text-gray-400;
+		@apply text-xs md:text-xl font-semibold;
 	}
 	.spec-logo{
 		@apply opacity-20 h-16 md:h-24 self-end;
+	}
+
+	.linear-gradient{
+		background:  linear-gradient(270deg, #ff38bb 4.25%, #ff8038 51.61%, #f5be66 80.43%, #f4dca8 93.03%);
+		-webkit-background-clip: text;
+  		-webkit-text-fill-color: transparent;
 	}
  
 </style>
