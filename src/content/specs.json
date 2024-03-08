@@ -1,62 +1,62 @@
 [
     {
         "title":"EEG Channel",
-        "value":"4 + (2 reference)",
-        "logo":"ear.svg" 
+        "value":"6 + 1 ref + 1 gnd",
+        "logo":"ear" 
     },
     {
         "title": "Electrode Type",
         "value": "Soft Dry",
-        "logo": "signal.svg"
+        "logo": "signal"
     },
     {
         "title": "Channel Location",
         "value": "In-ear & Around Ear",
-        "logo": "signal.svg"
+        "logo": "signal"
     },
     {
         "title": "Resolution",
         "value": "16-bit",
-        "logo": "signal.svg"
+        "logo": "signal"
     },
     {
         "title": "Sampling Rate",
         "value": "250Hz",
-        "logo": "signal.svg"
+        "logo": "signal"
     },
     {
         "title": "Sensor",
         "value": "3-axis IMU",
-        "logo": "imu.svg"
+        "logo": "imu"
     },
     {
         "title": "Connectivity",
         "value": "Blutooth Low Energy",
-        "logo": "bluetooth.svg"
+        "logo": "bluetooth"
     },
     {
         "title": "Battery Life",
         "value": "6 hrs",
-        "logo": "battery.svg"
+        "logo": "battery"
     },
     {
         "title": "Audio",
         "value": "Stereo Class-D Headphone Amplifier with 98db SNR", 
-        "logo": "battery.svg"
+        "logo": "battery"
     },
     {
         "title": "Dimensions",
         "value": "8 x 6.5 x 3 in",
-        "logo": "signal.svg"
+        "logo": "signal"
     },
     {
         "title": "Weight",
         "value": "15.61g",
-        "logo": "weight.svg"
+        "logo": "weight"
     },
     {
         "title": "Supported Platform",
         "value": "Windows 10 (64 Bit) Android 5.0 and above",
-        "logo": "signal.svg"
+        "logo": "signal"
     }
 ]

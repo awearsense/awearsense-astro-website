@@ -1,0 +1,43 @@
+---  
+interface Props {
+    title: string;
+    description: string;
+    imgsrc: string;
+} 
+const { title, description, imgsrc } = Astro.props;
+---
+
+<div class="card h-full flex-1 flex flex-col justify-between bg-white">
+    <div class="flex flex-col">
+        <span class="card-title">{title}</span> 
+        <span class="card-value linear-gradient">{description}</span>
+    </div>
+    <div>
+        <img 
+            class="spec-logo linear-gradient"
+            src={"/src/assets/specifications/" + imgsrc + '.svg'}
+            alt={title}/>
+    </div>
+</div>
+
+<style> 
+	.card{
+		@apply rounded-lg md:p-8 flex-1;
+	}
+	
+	.card-title{
+		@apply text-xs md:text-base font-semibold;
+	}
+	.card-value{
+		@apply text-xs md:text-xl font-semibold;
+	}
+	.spec-logo{
+		@apply opacity-20 h-16 md:h-24 self-end;
+	}
+
+    .linear-gradient{
+		background:  linear-gradient(270deg, #ff38bb 4.25%, #ff8038 51.61%, #f5be66 80.43%, #f4dca8 93.03%);
+		-webkit-background-clip: text;
+  		-webkit-text-fill-color: transparent;
+	}
+</style>

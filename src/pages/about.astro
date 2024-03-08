@@ -2,58 +2,163 @@
 import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro'; 
 
-import abhinav from '../assets/team/abhinav.jpg';
-import nabarun from '../assets/team/nabarun.jpg';
-import pritam from '../assets/team/pritam.jpg';
+import abhinavSrc from '../assets/team/abhinav.jpg';
+import nabarunSrc from '../assets/team/nabarun.jpg';
+import pritamSrc from '../assets/team/pritam.jpg';
 
 const founders = [
 	{
 		name:"abhinav",
-		img:abhinav,
+		img:abhinavSrc,
 		social:["",""]
 	},
 	{
 		name:"nabarun",
-		img:nabarun,
+		img:nabarunSrc,
 		social:["",""]
-	},{
+	},
+	{
 		name:"pritam",
-		img:pritam,
+		img:pritamSrc,
 		social:["",""]
 	}
 	];
+
+
+const advisors = [
+	{
+		name:"abhinav",
+		img:abhinavSrc,
+		social:["",""]
+	},
+	{
+		name:"nabarun",
+		img:nabarunSrc,
+		social:["",""]
+	},
+	{
+		name:"pritam",
+		img:pritamSrc,
+		social:["",""]
+	}
+	];
+
+	
+const team = [
+	{
+		name:"abhinav",
+		img:abhinavSrc,
+		social:["",""]
+	},
+	{
+		name:"nabarun",
+		img:nabarunSrc,
+		social:["",""]
+	},{
+		name:"pritam",
+		img:pritamSrc,
+		social:["",""]
+	}
+	];
+
 ---
 
 <script>
 
-</script>
+</script> 
 
 <Layout title="About us">
 	<main class="container md:max-w-screen-xl mx-auto">
 		<section id="main" class="h-screen flex items-center">
 			<div class="flex flex-col">
-				<span class="text-8xl tracking-tighter">team of passionate individuals, crafting next generation of interaction.</span>
+				<span class="text-8xl tracking-tight">we are a team of passionate individuals, crafting next generation of interaction.</span>
 				<span class="text-3xl tracking-wide linear-gradient">neural interface for your digital devices</span>
 			</div> 
 		</section> 
-		<section class="founders h-screen flex flex-col gap-16 py-32 relative">
-			<h2 class="text-8xl">founders</h2> 
+		<section class="max-h-fit flex flex-col gap-16 py-16">
+			<div>
+				<h2 class="text-6xl tracking-tight lowercase">
+					our goal is to make brain-computer interface seamlessly integrated into everyday life, unlocking new possibilities for human-machine interaction.
+				</h2>
+			</div>
+		</section>
+		<section class="founders max-h-fit flex flex-col gap-16 py-32 relative">
+			<h2 class="text-6xl tracking-wide">founders</h2> 
 			<div class="flex gap-16 w-full">
 				{
-					founders.map((founder)=>{
+					founders.map((item)=>( 
 						<div class="flex-1">
-							<h1 class="text-4xl font-semibold">{founder.name}</h1>
+							<h1 class="text-4xl">{item.name}</h1>
 							<div class="py-5 flex gap-2">
 								<a target="_blank" class="items" href="https://www.linkedin.com/company/awearsense">linkedin</a>
 								<a target="_blank" class="items" href="">github</a>   
 								<a target="_blank" class="items" href="">twitter</a>   
 							</div>
-							<Image
-								src={founder.img}
-								alt=""
+							<img
+								src={item.img.src}
+								alt={item.name}
 							/>
 						</div> 
-					})
+					
+					))
+				}
+			</div>
+		</section>
+		<section class="max-h-fit flex flex-col gap-16 py-16">
+			<div>
+				<h2 class="text-6xl tracking-tight lowercase">
+					Bringing subject matter experts on board, we are committed to transforming science fiction into reality through pioneering neurotech advancements.
+				</h2>
+			</div>
+		</section>
+		<section class="advisors max-h-fit flex flex-col gap-16 py-32 relative">
+			<h2 class="text-6xl tracking-wide">advisors & strategists</h2> 
+			<div class="flex gap-16 w-full">
+				{
+					advisors.map((item)=>( 
+						<div class="flex-1">
+							<h1 class="text-4xl">{item.name}</h1>
+							<div class="py-5 flex gap-2">
+								<a target="_blank" class="items" href="https://www.linkedin.com/company/awearsense">linkedin</a>
+								<a target="_blank" class="items" href="">github</a>   
+								<a target="_blank" class="items" href="">twitter</a>   
+							</div> 
+							<img
+								src={item.img.src}
+								alt={item.name}
+							/>
+						</div> 
+					
+					))
+				}
+			</div>
+		</section>
+		
+		<section class="max-h-fit flex flex-col gap-16 py-16">
+			<div>
+				<h2 class="text-6xl tracking-tight lowercase">
+					Meet our powerhouse team of developers, engineers, neurotechnologists, and designers. With a sharp focus on design, we fuse technology and neuroscience to craft transformative experiences, shaping the future of interfaces.
+				</h2>
+			</div>
+		</section>
+		<section class="team max-h-fit flex flex-col gap-16 py-32 relative">
+			<h2 class="text-6xl tracking-wide">our team</h2> 
+			<div class="flex gap-16 w-full">
+				{
+					team.map((item)=>( 
+						<div class="flex-1">
+							<h1 class="text-4xl">{item.name}</h1>
+							<div class="py-5 flex gap-2">
+								<a target="_blank" class="items" href="https://www.linkedin.com/company/awearsense">linkedin</a>
+								<a target="_blank" class="items" href="">github</a>   
+								<a target="_blank" class="items" href="">twitter</a>   
+							</div>
+							<img
+								src={item.img.src}
+								alt={item.name}
+							/>
+						</div>  
+					))
 				}
 			</div>
 		</section>
@@ -76,7 +181,7 @@ const founders = [
 		height: 100%;
 		z-index: -1;
 		background-color: #f5be66;
-	} */
+	} */ 
 
 
 	.linear-gradient{

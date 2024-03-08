@@ -1,18 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro'; 
-import  specsList from '../content/specs.json';
+import SpecsList from '../content/specs.json';
 import SignupForm from '../components/SignupForm.astro';
 import Insights from '../components/Insights.astro';
-import { Image } from "astro:assets";
+import Specs from '../components/Specs.astro'; 
 
-const images = [
-	"logo-nsrcel.png",
-	"logo-iit-hyderabad.png",
-	"logo-nsrcel.png",
-	"logo-iit-hyderabad.png",
-	"logo-nsrcel.png",
-	"logo-iit-hyderabad.png",
-];
+const partnersLogos = await Astro.glob("/src/assets/partners/*").then(files => {
+  return files.map(file => file.default);
+}); 
 ---
 
 <script>
@@ -165,7 +160,7 @@ const images = [
 </script>
 
 <Layout title="awearsense">
-	<main class="container md:max-w-screen-xl mx-auto px-5 md:px-0">
+	<main class="container md:max-w-screen-xl mx-auto">
 		 <!-- hero -->
 		<section id="main" class="h-screen flex justify-center items-center relative">
 			<div class="flex flex-col text-center">
@@ -216,46 +211,55 @@ const images = [
 			<div id="parent" class="w-full">
 				<div id="child" class="flex gap-4 max-h-fit"> 
 					{
-						specsList.map((item)=>(
-							<div class="card h-full flex-1 flex flex-col justify-between bg-white">
-								<div class="flex flex-col">
-									<span class="card-title">{item.title}</span> 
-									<span class="card-value linear-gradient">{item.value}</span>
-								</div>
-								<div>
-									<img 
-										class="spec-logo linear-gradient"
-										src={"/src/assets/specifications/" + item.logo}
-										alt={item.title}/>
-								</div>
-							</div>
+						SpecsList.map((item)=>(
+							<Specs
+							  title={item.title} 
+							  description={item.value}
+							  imgsrc={item.logo}
+							/>
 						))
 					}  
 				</div>
-			</div>
+			</div> 
 		</section>
 		
 
 	   <!-- trusted partners -->
 	   <section id="partners" class="flex flex-col justify-center gap-16 md:h-screen py-32">
-			<div class="flex flex-col w-full gap-16 md:text-center">
-				<h1 class="text-6xl font-semibold tracking-wide text-slate-300">
+			<div class="section-title flex items-center">
+				<h1 class="text-6xl tracking-wide">
 					trusted partners
 				</h1> 
+			</div> 
+			<div class="w-full h-full">
+				<div class="flex gap-4 max-h-fit"> 
+					{
+						partnersLogos.map((item)=>(
+							<div class="partners-logo border px-16 py-4"> 
+								<img
+									class="object-fit w-full mx-auto grayscale opacity-50 hover:opacity-100 ease-in duration-300"
+									src={item.src}
+									alt={item} 
+								/>
+							</div>
+						))
+					}  
+				</div>
 			</div>
-			<div class="grid grid-cols-2 md:flex gap-4 md:justify-between md:items-center">
+
+			<!-- <div class="grid grid-cols-2 md:flex gap-4 md:justify-between md:items-center">
 				{
 					images.map((item) => (
 						<div class="partners-logo h-16 border">
 							<img
-							class="object-fit h-full mx-auto grayscale opacity-50 hover:opacity-100 ease-in duration-300"
-							src={"/src/assets/partners/" + item}
-							alt={item} 
-						/>
+								class="object-fit h-full mx-auto grayscale opacity-50 hover:opacity-100 ease-in duration-300"
+								src={"/src/assets/partners/" + item}
+								alt={item} 
+							/>
 						</div>
 					))
 				}
-			</div>
+			</div> -->
 		</section>
 	</main>
 </Layout>
@@ -278,21 +282,7 @@ const images = [
 	#child{ 
 		width: 250%;
 		height:20rem; 
-	} 
-
-	.card{
-		@apply rounded-lg md:p-8 flex-1;
-	}
-	
-	.card-title{
-		@apply text-xs md:text-base font-semibold;
-	}
-	.card-value{
-		@apply text-xs md:text-xl font-semibold;
-	}
-	.spec-logo{
-		@apply opacity-20 h-16 md:h-24 self-end;
-	}
+	}  
 
 	.linear-gradient{
 		background:  linear-gradient(270deg, #ff38bb 4.25%, #ff8038 51.61%, #f5be66 80.43%, #f4dca8 93.03%);
