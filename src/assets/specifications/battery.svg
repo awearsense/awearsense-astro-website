@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M20 10V14M11 10L9 12H12L10 14M4 9V15C4 15.5523 4.44772 16 5 16H17C17.5523 16 18 15.5523 18 15V9C18 8.44772 17.5523 8 17 8H5C4.44772 8 4 8.44772 4 9Z" stroke="#464455" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="149" height="104" viewBox="0 0 149 104" fill="none" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="25.834" cy="9.63002" rx="1.605" ry="1.605" fill="black"/>
+<ellipse cx="86.6786" cy="61.8377" rx="1.605" ry="1.605" fill="black"/>
+<path d="M83.1256 66.334L55.0489 102.119L70.0686 60.6166H42.0054L83.1121 2.11853L74.0212 42.4347H102.084L92.9996 53.8939L90.0922 57.369" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M65.3215 9.63H31.9869M92.6762 9.63H127.199C132.55 9.63 136.888 13.9681 136.888 19.3194V32.4492C136.888 33.4525 137.701 34.2659 138.705 34.2659H141.907C144.583 34.2659 146.752 36.435 146.752 39.1106V65.1192C146.752 67.7949 144.583 69.9639 141.907 69.9639H138.705C137.701 69.9639 136.888 70.7773 136.888 71.7807V84.9177C136.888 90.2691 132.55 94.6072 127.199 94.6072H71.3112M47.3967 94.6072H11.2747C5.92335 94.6072 1.58524 90.2691 1.58524 84.9177V19.3194C1.58524 13.9681 5.92334 9.63 11.2747 9.63H19.3623" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

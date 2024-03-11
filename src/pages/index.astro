@@ -5,6 +5,8 @@ import SignupForm from '../components/SignupForm.astro';
 import Insights from '../components/Insights.astro';
 import Specs from '../components/Specs.astro'; 
 
+import videoSrc from '../assets/main.mp4';
+
 const partnersLogos = await Astro.glob("/src/assets/partners/*").then(files => {
   return files.map(file => file.default);
 }); 
@@ -194,7 +196,7 @@ const partnersLogos = await Astro.glob("/src/assets/partners/*").then(files => {
 		<section class="f-video-section h-screen relative flex items-center justify-center text-center">
 			<div class="f-video-container absolute  -translate-x-1/2 left-1/2 -translate-y-1/2 top-1/2 w-screen h-full">  
 			   <video autoplay loop muted class="f-video object-cover w-full h-full">
-				   <source src="/src/assets/main.mp4" type="video/mp4" />
+				   <source src={videoSrc} type="video/mp4" />
 				   Your browser does not support the video tag.
 			   </video>
 		   </div>

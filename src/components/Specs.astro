@@ -4,7 +4,10 @@ interface Props {
     description: string;
     imgsrc: string;
 } 
-const { title, description, imgsrc } = Astro.props;
+
+const { title, description, imgsrc } = Astro.props as Props;
+const { default: innerHTML } = await import(`../assets/specifications/${imgsrc}.svg?raw`);
+
 ---
 
 <div class="card h-full flex-1 flex flex-col justify-between bg-white">
@@ -12,11 +15,8 @@ const { title, description, imgsrc } = Astro.props;
         <span class="card-title">{title}</span> 
         <span class="card-value linear-gradient">{description}</span>
     </div>
-    <div>
-        <img 
-            class="spec-logo linear-gradient"
-            src={"/src/assets/specifications/" + imgsrc + '.svg'}
-            alt={title}/>
+    <div class="opacity-30">   
+		<Fragment set:html={innerHTML}/>
     </div>
 </div>
 

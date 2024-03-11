@@ -2,27 +2,27 @@
     {
         "title":"EEG Channel",
         "value":"6 + 1 ref + 1 gnd",
-        "logo":"ear" 
+        "logo":"eeg-channel" 
     },
     {
         "title": "Electrode Type",
         "value": "Soft Dry",
-        "logo": "signal"
+        "logo": "soft-electrode"
     },
     {
         "title": "Channel Location",
         "value": "In-ear & Around Ear",
-        "logo": "signal"
+        "logo": "channel-location"
     },
     {
         "title": "Resolution",
         "value": "16-bit",
-        "logo": "signal"
+        "logo": "resolution"
     },
     {
         "title": "Sampling Rate",
         "value": "250Hz",
-        "logo": "signal"
+        "logo": "sampling-rate"
     },
     {
         "title": "Sensor",
@@ -42,12 +42,12 @@
     {
         "title": "Audio",
         "value": "Stereo Class-D Headphone Amplifier with 98db SNR", 
-        "logo": "battery"
+        "logo": "audio"
     },
     {
         "title": "Dimensions",
         "value": "8 x 6.5 x 3 in",
-        "logo": "signal"
+        "logo": "dimension"
     },
     {
         "title": "Weight",
@@ -57,6 +57,6 @@
     {
         "title": "Supported Platform",
         "value": "Windows 10 (64 Bit) Android 5.0 and above",
-        "logo": "signal"
+        "logo": "supporting-platform"
     }
 ]
