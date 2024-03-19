@@ -9,9 +9,11 @@ const currentPath = pathname.slice(1); // remove the first "/"
 	var navbar = document.getElementById('navbar'); 
 	window.addEventListener('scroll', function() {
 		if (window.scrollY > 100) {
-			navbar!.classList.add('bg-bglight');
+			navbar!.classList.add('bg-bglight','text-gray-500');
+			navbar!.classList.remove('text-white');
 		} else {
-			navbar!.classList.remove('bg-bglight');
+			navbar!.classList.remove('bg-bglight','text-gray-500');
+			navbar!.classList.add('text-white');
 		}
 	});
 
@@ -25,40 +27,40 @@ const currentPath = pathname.slice(1); // remove the first "/"
 	
 </script>
 
-<nav id="navbar" class="fixed left-0 right-0 z-10 transition-all duration-700 ease-in-out"> 
+<nav id="navbar" class="fixed left-0 right-0 z-10 transition-all duration-700 ease-in-out text-white"> 
 	<div class="container md:max-w-screen-xl mx-auto flex items-center justify-between">
-		<a href="/" class="nav-item text-xl text-slate-600 tracking-tight font-medium linear-gradient">awearsense</a>
-		<div class="md:flex gap-1 hidden">
-			<a href="/about" class={currentPath === "about" ? "text-btn font-medium nav-item" : "nav-item"} >about</a> 
-			<a href="/science" class={currentPath === "science" ? "text-btn font-medium nav-item" : "nav-item"} >technology</a> 
+		<a href="/" class="nav-item text-xl tracking-tight font-medium linear-gradient">awearsense</a>
+		<div class="md:flex gap-3 hidden py-3">
+			<a href="/about" class={currentPath === "about" ? "text-btn font-medium nav-item" : "nav-item  text-sm"} >about</a> 
+			<!-- <a href="/science" class={currentPath === "science" ? "text-btn font-medium nav-item" : "nav-item"} >technology</a>  -->
 			<!-- <a href="#partners"  class={currentPath != "" ? "hidden" : "nav-item"} class="nav-item" >partners</a>  -->
-			<a href="/study" class={currentPath === "study" ? "text-btn font-medium nav-item" : "nav-item"} class="nav-item" >research</a> 
-			<a href="/dev" class={currentPath === "docs" ? "text-btn font-medium nav-item nav-item-inactive" : "nav-item nav-item-inactive"} >dev</a>
+			<!-- <a href="/study" class={currentPath === "study" ? "text-btn font-medium nav-item" : "nav-item"} class="nav-item" >research</a>  -->
+			<a href="/dev" class={currentPath === "docs" ? "text-btn font-medium nav-item nav-item-inactive" : "nav-item  text-sm nav-item-inactive"} >dev</a>
+			<a href="/contact" class="hidden bg-bglight text-txt md:flex items-center justify-center px-8 py-1 rounded-full font-medium">contact us</a>
 		</div> 
-		<a href="/contact" class="hidden bg-bglight text-txt md:flex items-center justify-center px-8 py-2 rounded-full font-medium tracking-tight">contact us</a>
 		<img id="nav-menu" class="w-14 p-3 object-fill md:hidden" src="/src/assets/menu.svg" alt="">
 	</div>
 	<div id="menu-option" class="flex flex-col gap-1 shadow-md md:hidden">
 		<a href="/about" class={currentPath === "about" ? "text-btn font-medium nav-item" : "nav-item"} >about</a> 
-		<a href="/science" class={currentPath === "science" ? "text-btn font-medium nav-item" : "nav-item"} >technology</a> 
+		<!-- <a href="/science" class={currentPath === "science" ? "text-btn font-medium nav-item" : "nav-item"} >technology</a>  -->
 		<!-- <a href="#partners"  class={currentPath != "" ? "hidden" : "nav-item"} class="nav-item" >partners</a>  -->
-		<a href="/study" class={currentPath === "study" ? "text-btn font-medium nav-item" : "nav-item"} class="nav-item" >research</a> 
+		<!-- <a href="/study" class={currentPath === "study" ? "text-btn font-medium nav-item" : "nav-item"} class="nav-item" >research</a>  -->
 		<a href="/dev" class={currentPath === "docs" ? "text-btn font-medium nav-item nav-item-inactive" : "nav-item nav-item-inactive"} >docs</a>
-		<a href="/contact" class="border-2 text-center text-btn md:flex items-center justify-center px-8 py-2 mx-6 mb-8 rounded-full font-medium tracking-tight hover:bg-slate-100">contact us</a>
+		<a href="/contact" class="border-2 text-center text-btn md:flex items-center justify-center px-8 mx-6 mb-8 rounded-full font-medium hover:bg-slate-100">contact us</a>
 	</div> 
 </nav>
 
 <style>
 	.nav-item {
-		@apply px-6 py-4;
+		@apply px-6 py-3;
 	}
 
 	.nav-item-inactive{
-		@apply pointer-events-none text-slate-300;
+		@apply pointer-events-none text-slate-300 opacity-50;
 	}
 
 	.nav-item:hover {
-		@apply  bg-opacity-10 rounded-full;
+		@apply bg-opacity-10 rounded-full;
 	}
 
 	.linear-gradient{
