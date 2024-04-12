@@ -6,6 +6,7 @@ import Insights from '../components/Insights.astro';
 import Specs from '../components/Specs.astro'; 
 
 import videoSrc from '../assets/main.mp4';
+import Problems from '../components/Problems.astro';
 
 const partnersLogos = await Astro.glob("/src/assets/partners/*").then(files => {
   return files.map(file => file.default);
@@ -165,26 +166,32 @@ const partnersLogos = await Astro.glob("/src/assets/partners/*").then(files => {
 	<main class="container md:max-w-screen-xl mx-auto">
 		 <!-- hero -->
 		<section id="main" class="h-screen flex justify-center items-center relative">
-			<div class="grid grid-cols-2 gap-16">
-				<div class="col-span-1 bg-gray-500">
-					<h1 class="text-7xl md:text-9xl font-normal tracking-tighter leading-3 text-white drop-shadow-sm">awearsense</h1> 
-					<SignupForm/>
-				</div> 
-				<div class="col-span-1 bg-gray-800">
-					<span class="text-white text-4xl">next-gen neural interface for your ar/vr/xr</span>
+			<div class="grid grid-cols-2">
+				<div class="flex flex-col gap-10">
+					<div class="col-span-1">
+						<h1 class="text-7xl md:text-8xl font-extralight leading-3 text-white drop-shadow-sm">ear-based neural interfaces for seamless interactions.</h1> 
+						<!-- <SignupForm/> -->
+					</div>   
+					<span class="text-white font-extralight text-2xl">awearsense is building natural <i class="">neural interfaces</i> for the new era of computing.</span>
 				</div>
 			</div>
 		</section>
+
 		<!-- focus -->
-		<Insights
+		<!-- <Insights
 			title="Focus",
     		description="achive your peak <br/> performance."
-		/> 
+		/>  -->
+		<Problems
+			description="Spatial Computing has an Interaction Problem. Existing ways: <br/> Suffer from inaccurate control, needing precise handling. <br/>	Creates physical and mental fatigue on extensive use. <br/> Need additional devices adding to cost and maintenance"
+		/>
+
 		<!-- relax -->
 		<Insights
 			title="Relax",
     		description="gain mental <br> clarity."
 		/>  
+
 		<!-- control -->
 		<Insights
 			title="Interact",
@@ -222,9 +229,8 @@ const partnersLogos = await Astro.glob("/src/assets/partners/*").then(files => {
 					}  
 				</div>
 			</div> 
-		</section>
+		</section> 
 		
-
 	   <!-- trusted partners -->
 	   <section id="partners" class="flex flex-col justify-center gap-16 py-32">
 			<div class="section-title flex items-center">
@@ -259,12 +265,15 @@ const partnersLogos = await Astro.glob("/src/assets/partners/*").then(files => {
 		left: 50%;
 		transform: translate(-50%);
 		width: 100vw;
+		background-color: black;
 		height: 100%;
-		background-image: url("../assets/bg.png");
 		background-repeat: no-repeat no-repeat;
 		background-position: center;
 		background-size: cover;
 	}
+
+	
+	/* background-image: url("../assets/bg.png"); */
 
 	#child{ 
 		width: 250%;
