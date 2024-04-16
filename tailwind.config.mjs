@@ -27,6 +27,7 @@ export default {
 			},
 			fontFamily: {
 				'DM-Sans': ["DM Sans", "serif"],
+				'PlayFair':["Playfair Display","sans-serif"]
 			},
 			height: {
 				'halfscreen': '50vh',

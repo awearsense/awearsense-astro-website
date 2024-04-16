@@ -1,0 +1,70 @@
+---  
+// interface Props {
+//     title: string;
+//     description: string;
+// } 
+// const { title, description } = Astro.props;
+---
+
+<script>
+	import type { number } from "astro/zod";
+import { gsap } from "gsap"; 
+	import { ScrollTrigger } from "gsap/ScrollTrigger";  
+	gsap.registerPlugin(ScrollTrigger);  
+
+	const canvas = document.getElementById("product");
+	const context = canvas.getContext("2d");
+
+	canvas.width = 1158;
+	canvas.height = 770;
+
+	const frameCount = 147;
+	const currentFrame = (index:number) => (
+		`https://www.apple.com/105/media/us/airpods-pro/2019/1299e2f5_9206_4470_b28e_08307a42f19b/anim/sequence/large/01-hero-lightpass/${(index + 1).toString().padStart(4, '0')}.jpg`
+	);
+
+	const images:any = []
+	const airpods = {
+		frame: 0
+	};
+
+	for (let i = 0; i < frameCount; i++) {
+		const img = new Image();
+		img.src = currentFrame(i);
+		images.push(img);
+	}
+
+	gsap.to(airpods, {
+		frame: frameCount - 1,
+		snap: "frame",
+		ease: "none",
+		scrollTrigger: {
+			scrub: 0.5,
+			pin:true
+		},
+		onUpdate: render // use animation onUpdate instead of scrollTrigger's onUpdate
+	});
+
+	images[0].onload = render;
+
+	function render() {
+		context.clearRect(0, 0, canvas.width, canvas.height);
+		context.drawImage(images[airpods.frame], 0, 0); 
+	}
+
+</script> 
+
+<section class="w-full h-screen">
+	<div class="realtive h-full w-full">
+		<canvas id="product" class="absolute top-0 left-0 w-full h-ful"></canvas>
+		<h1>SECTION 2</h1>
+	</div> 
+</section> 
+
+<style> 
+	.linear-gradient{
+		background:  linear-gradient(270deg, #ff38bb 4.25%, #ff8038 51.61%, #f5be66 80.43%, #f4dca8 93.03%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+</style>

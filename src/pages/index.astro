@@ -1,12 +1,13 @@
 ---
+import Product from '../components/Product.astro';
 import Layout from '../layouts/Layout.astro'; 
-import SpecsList from '../content/specs.json';
-import SignupForm from '../components/SignupForm.astro';
-import Insights from '../components/Insights.astro';
-import Specs from '../components/Specs.astro'; 
+// import SpecsList from '../content/specs.json';
+// import SignupForm from '../components/SignupForm.astro';
+// import Insights from '../components/Insights.astro';
+// import Specs from '../components/Specs.astro'; 
 
-import videoSrc from '../assets/main.mp4';
-import Problems from '../components/Problems.astro';
+// import videoSrc from '../assets/main.mp4';
+// import Problems from '../components/Problems.astro';
 
 const partnersLogos = await Astro.glob("/src/assets/partners/*").then(files => {
   return files.map(file => file.default);
@@ -163,16 +164,16 @@ const partnersLogos = await Astro.glob("/src/assets/partners/*").then(files => {
 </script>
 
 <Layout title="awearsense">
-	<main class="container md:max-w-screen-xl mx-auto">
+	<main class="container md:max-w-screen-xl mx-auto lowercase">
 		 <!-- hero -->
 		<section id="main" class="h-screen flex justify-center items-center relative">
-			<div class="grid grid-cols-2">
-				<div class="flex flex-col gap-10">
+			<div class="grid grid-cols-3">
+				<div class="flex flex-col gap-10 col-span-2">
 					<div class="col-span-1">
-						<h1 class="text-7xl md:text-8xl font-extralight leading-3 text-white drop-shadow-sm">ear-based neural interfaces for seamless interactions.</h1> 
+						<h1 class="text-7xl md:text-8xl font-extralight leading-3 text-white drop-shadow-sm">ear-based<br> <i class="font-PlayFair">neural interfaces</i> <br> for seamless interactions.</h1> 
 						<!-- <SignupForm/> -->
 					</div>   
-					<span class="text-white font-extralight text-2xl">awearsense is building natural <i class="">neural interfaces</i> for the new era of computing.</span>
+					<span class="text-white font-extralight text-2xl"><span class="linear-gradient font-medium">awearsense</span> is building natural <i class="font-PlayFair">neural interfaces</i> for the new era of computing.</span>
 				</div>
 			</div>
 		</section>
@@ -182,24 +183,44 @@ const partnersLogos = await Astro.glob("/src/assets/partners/*").then(files => {
 			title="Focus",
     		description="achive your peak <br/> performance."
 		/>  -->
-		<Problems
+		<!-- <Problems
 			description="Spatial Computing has an Interaction Problem. Existing ways: <br/> Suffer from inaccurate control, needing precise handling. <br/>	Creates physical and mental fatigue on extensive use. <br/> Need additional devices adding to cost and maintenance"
-		/>
+		/> -->
+		<section class="flex flex-col md:gap-24 items-center md:py-32  md:max-w-screen-xl mx-auto">
+			<div class="w-full flex flex-col justify-center gap-8 h-screen"> 
+				<p class="text-5xl md:text-6xl">Spatial Computing has an Interaction Problem.</p>
+				<p class="text-5xl"> Existing ways </p>
+				<ul class="text-5xl">
+					<li>Creates physical and mental fatigue on extensive use. </li>
+					<li>Suffer from inaccurate control, needing precise handling. </li>
+					<li>Need additional devices adding to cost and maintenance</li> 
+				</ul> 
+			</div> 
+		</section>
 
-		<!-- relax -->
-		<Insights
+		<!-- relax --> 
+		<section class="flex flex-col md:gap-24 items-center md:py-32  md:max-w-screen-xl mx-auto">
+			<div class="w-full flex flex-col justify-center gap-8 h-screen"> 
+				<p class="text-5xl md:text-6xl">Welcome to a New Paradigm of Human Computer Interaction</p>
+				<ul class="text-5xl">
+					<li>Gain Insight with Neurofeedback </li>
+					<li>Control Devices with Neurocontrol</li>
+					<li>Familiar Use with an Ear-based Form</li>
+				</ul> 
+		</section>
+		<!-- <Insights
 			title="Relax",
     		description="gain mental <br> clarity."
-		/>  
+		/>   -->
 
 		<!-- control -->
-		<Insights
+		<!-- <Insights
 			title="Interact",
     		description="think & control <br/> your device."
-		/>   
+		/>    -->
 
 		<!-- center video -->
-		<section class="f-video-section h-screen relative flex items-center justify-center text-center">
+		<!-- <section class="f-video-section h-screen relative flex items-center justify-center text-center">
 			<div class="f-video-container absolute  -translate-x-1/2 left-1/2 -translate-y-1/2 top-1/2 w-screen h-full">  
 			   <video autoplay loop muted class="f-video object-cover w-full h-full">
 				   <source src={videoSrc} type="video/mp4" />
@@ -207,10 +228,21 @@ const partnersLogos = await Astro.glob("/src/assets/partners/*").then(files => {
 			   </video>
 		   </div>
 		   <h1 class="text-7xl md:text-10xl font-normal tracking-tighter text-white drop-shadow-sm">awearsense</h1>
-	   </section> 
+	   </section>  -->
+
+	   <section class="f-video-section h-screen relative flex items-center justify-center text-center">
+			<Product/>
+			<!-- <div class="text-5xl">
+				Up Close (like an Apple reveal)
+				Soft Dry Electrodes 
+				Around Ear Contacts
+				Ergonomic Design
+				Unique Interactions
+			</div> -->
+	   </section>
 
 		<!-- technical specifications -->
-		<section id="technical-details" class="flex flex-col gap-8 h-screen">
+		<!-- <section id="technical-details" class="flex flex-col gap-8 h-screen">
 			<div class="section-title flex items-center">
 				<h1 class="text-6xl tracking-wide">
 					technical specification
@@ -229,13 +261,13 @@ const partnersLogos = await Astro.glob("/src/assets/partners/*").then(files => {
 					}  
 				</div>
 			</div> 
-		</section> 
+		</section>  -->
 		
 	   <!-- trusted partners -->
 	   <section id="partners" class="flex flex-col justify-center gap-16 py-32">
 			<div class="section-title flex items-center">
 				<h1 class="text-6xl tracking-wide">
-					trusted partners
+					supported by
 				</h1> 
 			</div> 
 			<div class="w-full h-full">
