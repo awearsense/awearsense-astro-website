@@ -1,0 +1,53 @@
+---
+interface Props { 
+    message: string;
+    description:string;
+} 
+const { message,description } = Astro.props;
+---
+<script>
+    import { gsap } from "gsap"; 
+    import { ScrollTrigger } from "gsap/ScrollTrigger";   
+    import SplitType from 'split-type';  
+
+    gsap.registerPlugin(ScrollTrigger);  
+
+    const splitTypes = document.querySelectorAll('.message')
+
+	const tl = gsap.timeline(); 
+
+    splitTypes.forEach((char:any)=>{
+        const text = new SplitType(char,{types:'words'})
+        tl.from(text.words,{
+            scrollTrigger: {
+                trigger: char, 
+                scrub: true, 
+                start: "top center",
+                end: "top 20%"
+            }, 
+            opacity:0.1,
+            stagger: 0.1
+        })
+    })  
+    
+    tl.from('.problems',{  
+        opacity:0.2,
+        yPercent:-10,
+        scale:0,
+        stagger: 0.1
+    })
+</script>
+
+<section class="valueprop flex flex-col justify-center h-screen">
+    <div class="w-full flex flex-col justify-center gap-8 md:py-32"> 
+        <div class="md:text-6xl">
+            <p class="message">{message} <br>
+                <span class="text-brand-darkest" set:html={description}></span>
+            </p>
+        </div> 
+    </div> 
+</section>
+
+<style>
+
+</style>

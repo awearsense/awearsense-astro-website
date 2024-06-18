@@ -17,9 +17,11 @@
     "@astrojs/check": "^0.4.1",
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource/dm-sans": "^5.0.18",
+    "@studio-freight/lenis": "^1.0.42",
     "astro": "^4.1.1",
     "gsap": "^3.12.4",
     "sharp": "^0.33.2",
+    "split-type": "^0.3.4",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.3.3"
   }

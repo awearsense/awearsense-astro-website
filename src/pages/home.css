@@ -1,0 +1,5 @@
+.strip{ 
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.00) 100%);
+    backdrop-filter: blur(var(--blurstrength));
+    -webkit-backdrop-filter: blur(var(--blurstrength)); 
+  }

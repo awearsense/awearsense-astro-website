@@ -37,8 +37,11 @@ export default {
 			colors: {
 				btn: '#ff8038',
 				txt:'#ff8038',
-				bglight:'#f6f6ef',
-				bgdark:"#f4dca8"
+				brand:{
+					darkest:"#f4dca8",
+					dark:"#fffce1",
+					light:"#f6f6ef",
+				}  
 			}
 		},
 	},

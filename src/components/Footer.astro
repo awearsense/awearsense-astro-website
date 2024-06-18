@@ -1,44 +1,66 @@
 --- 
 import Copyright from '../components/CopyRight.astro'
+import WaitList from '../components/WaitList.astro'
+import linkedin from '../assets/social/linkedin.svg?url';
+import github from '../assets/social/github.svg?url';
+import instagram from '../assets/social/instagram.svg?url'; 
+import reddit from '../assets/social/reddit.svg?url'; 
+import arrow from '../assets/social/arrow-open.svg?url';  
 ---
-<footer class="bg-slate-200" id="footer">
-    <div class="container md:max-w-screen-xl mx-auto backdrop-blur px-5 py-16 md:px-0">
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="text-xl font-medium text-btn tracking-tight md:px-6">awearsense</div>
-            <div class="flex flex-col gap-4">
-                <span class="font-semibold text-gray-800">contact us</span>
-                <a class="items" href="https://www.linkedin.com/company/awearsense">
-                    <span class="material-symbols-outlined">
-                    mail
-                    </span>connect@awearsense.com</a>
-                <a class="items" href=""><span class="material-symbols-outlined">
-                    phone
-                    </span>+91-878 700 05079</a>
-                <a class="items" href="https://reddit.com/r/awearsense/s/HK8iID09Jf"><span class="material-symbols-outlined">
-                    room
-                    </span>Bengaluru, IN </a>
-            </div>
-            <div class="flex flex-col gap-4 ">
-                <span class="font-semibold text-gray-800">follow us</span>
-                <a target="_blank" class="items" href="https://www.linkedin.com/company/awearsense">linkedin</a>
-                <a target="_blank" class="items" href="">instagram</a> 
-                <a target="_blank" class="items" href="https://reddit.com/r/awearsense/s/HK8iID09Jf">reddit</a>
-                <a target="_blank" class="items" href="https://github.com/awearsense">github</a>
+<footer id="footer" class="container flex flex-col md:max-w-screen-2xl mx-auto backdrop-blur px-16 md:px-16 relative" > 
+    <div class="grid md:grid-cols-2 gap-16 py-32">
+        <div class="flex flex-col gap-8">
+            <h2 class="text-8xl font-thin">awearsense</h2>
+            <WaitList show={false}/>
+            <div class="flex gap-4">
+                <a target="_blank" class="items" href="https://github.com/awearsense"><img src={github} alt={github}/></a>
+                <a target="_blank" class="items" href="https://www.linkedin.com/company/awearsense"><img src={linkedin} alt={linkedin}/></a>
+                <a target="_blank" class="items" href="https://www.instagram.com/awearsense"><img src={instagram} alt={instagram}/></a> 
+                <a target="_blank" class="items" href="https://reddit.com/r/awearsense/s/HK8iID09Jf"><img src={reddit} alt={reddit}/></a>
             </div>
         </div>
+        <div class="flex flex-col hidden">
+            <a href="" class="flex gap-2 align-middle text-4xl"> <span class="font-PlayFair text-sm">01</span> <span>about us</span> <img class="h-10" src={arrow} alt="arrow"></a>
+            <a href="" class="flex gap-2 align-middle text-4xl"> <span class="font-PlayFair text-sm">02</span> <span>roadmap</span> <img class="h-10" src={arrow} alt="arrow"></a>
+            <a href="" class="flex gap-2 align-middle text-4xl"> <span class="font-PlayFair text-sm">03</span> <span>researh</span> <img class="h-10" src={arrow} alt="arrow"></a>
+            <a href="" class="flex gap-2 align-middle text-4xl"> <span class="font-PlayFair text-sm">04</span> <span>blog</span> <img class="h-10" src={arrow} alt="arrow"></a>
+        </div>
+    </div>  
+    <div class="justify-end">
+        <Copyright/>
     </div>
-    <Copyright/>
 </footer>
 
 <style>
     .items{
-        @apply opacity-50 text-sm flex items-center gap-4 tracking-wide;
+        @apply  w-6 h-6;
     }
 
-    #footer{  
+    .items > img{
+        @apply w-full h-full;
+    }
+
+    #footer::before{
+        content: '';
+        position: absolute;
+        left: 50%;
+        width: 100vw;
+        height: 100%;
+        transform: translateX(-50%);
+        background-color: #f6f6ef;
+        z-index: -1;
+    }
+
+    /* #footer{  
         background-image: url('../assets/bg.jpg');
         background-repeat: no-repeat no-repeat;
         background-position: center;
         background-size: cover;
-    }
+    } */
+
+    .linear-gradient{
+		background:  linear-gradient(270deg, #ff38bb 4.25%, #ff8038 51.61%, #f5be66 80.43%, #f4dca8 93.03%);
+		-webkit-background-clip: text;
+  		-webkit-text-fill-color: transparent;
+	}
 </style>
