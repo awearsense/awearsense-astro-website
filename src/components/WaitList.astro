@@ -55,7 +55,7 @@ const { show } = Astro.props;
 </script>
 
 <section class="flex flex-col gap-2 w-full">
-  <h2 class=`font-medium text-3xl ${show?'text-white':'text-black'}`>
+  <h2 class=`font-medium text-xl md:text-3xl ${show?'text-white':'text-black'}`>
     join the waitlist
   </h2>
   <form class="flex md:w-2/3" method="post">
@@ -71,18 +71,19 @@ const { show } = Astro.props;
       <img class="h-full" src={show ? arrowwhite : arrow} alt="arrow" />
     </button>
   </form>
-
-  <style>
-    .linear-gradient {
-      background: linear-gradient(
-        270deg,
-        #ff38bb 4.25%,
-        #ff8038 51.61%,
-        #f5be66 80.43%,
-        #f4dca8 93.03%
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-  </style>
 </section>
+
+
+<style>
+  .linear-gradient {
+    background: linear-gradient(
+      270deg,
+      #ff38bb 4.25%,
+      #ff8038 51.61%,
+      #f5be66 80.43%,
+      #f4dca8 93.03%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+</style>

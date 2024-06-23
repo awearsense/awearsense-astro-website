@@ -1,4 +1,6 @@
 ---
+
+import Logo from '../assets/logo.svg'
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1); // remove the first "/"
 
@@ -27,9 +29,12 @@ const currentPath = pathname.slice(1); // remove the first "/"
 	
 </script>
 
-<nav id="navbar" class="fixed left-0 right-0 z-10 transition-all duration-700 ease-in-out text-white"> 
+<nav id="navbar" class="fixed left-0 right-0 z-20 transition-all duration-700 ease-in-out text-white"> 
 	<div class="container md:max-w-screen-2xl mx-auto flex items-center justify-between">
-		<a href="/" class="nav-item text-xl tracking-tight font-medium linear-gradient">awearsense</a>
+		<a href="/" class="nav-item flex gap-4 items-center align-middle">
+			<img src={Logo.src} alt="" class="h-8 w-8">
+			<span class="text-2xl tracking-tight font-medium linear-gradient">awearsense</span>
+		</a>
 		<div class="md:flex gap-3 hidden py-3">
 			<!-- <a href="/about" class={currentPath === "about" ? "text-btn font-medium nav-item" : "nav-item  text-sm"} >about</a>  -->
 			<!-- <a href="/science" class={currentPath === "science" ? "text-btn font-medium nav-item" : "nav-item"} >technology</a>  -->
