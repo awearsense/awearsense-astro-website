@@ -16,7 +16,7 @@ const Hero = () =>{
                     alt="device picture"
                     />
 			</div> 
-			<div className="absolute flex w-screen h-full t-0 glass md:bg-[length:1%] bg-[length:10%]">
+			<div className="absolute flex w-screen h-full t-0 glass md:bg-[length:2%] bg-[length:10%]">
 				 
 			</div>
 			<div className="grid md:grid-cols-2 gap-16 z-10">
@@ -24,7 +24,7 @@ const Hero = () =>{
 					<div className="col-span-1">
 						<h1 className="text-4xl md:text-7xl font-extralight  text-white drop-shadow-sm">ear-based<br/> <i className="font-PlayFair">neural interfaces</i> <br/> for seamless interactions.</h1> 
 					</div>   
-					<span className="text-white font-extralight text-xl"><span className="linear-gradient font-medium">awearsense</span> is building natural <i className="font-PlayFair">neural interfaces</i> for the new era of computing.</span>
+					<span className="text-white font-extralight text-3xl"><span className="linear-gradient font-medium">awearsense</span> is building natural <i className="font-PlayFair">neural interfaces</i> for the new era of computing.</span>
 				</div>
 				<div className="flex items-end">
 					<WaitList show={true}/>
