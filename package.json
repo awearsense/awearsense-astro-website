@@ -1,23 +1,27 @@
 {
-  "name": "",
-  "type": "module",
-  "version": "0.0.1",
+  "name": "awearsense-website",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "@astrojs/tailwind": "^5.0.2",
-    "@fontsource/dm-sans": "^5.0.15",
-    "@fontsource/material-icons": "^5.0.7",
-    "@mdi/light-font": "^0.2.63",
-    "astro": "^3.3.0",
-    "astro-embed": "^0.6.1",
-    "gsap": "^3.12.4",
-    "material-symbols": "^0.13.1",
-    "tailwindcss": "^3.3.3"
+    "@geist-ui/icons": "^1.0.2",
+    "next": "15.0.3",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "15.0.3",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
   }
 }
